@@ -5,6 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @SpringBootApplication
@@ -23,6 +24,14 @@ public class HelloApplication {
                 @PathVariable("secondName") String lastName) {
     
             return String.format("Hellow %s %s", firstName, lastName);
+        }
+
+        @GetMapping()
+        public String helloMundo(
+                @RequestParam("name") String name,
+                @RequestParam("lastName") String lastName) {
+            
+            return String.format("Hello %s %s", name, lastName);
         }
 
 }
