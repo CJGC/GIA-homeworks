@@ -25,4 +25,12 @@ public class HelloApplication {
     
             return String.format("Hello %s %s", firstName, lastName);
         }
+        
+        GetMapping()
+        public String helloMundo(
+                @RequestParam("name") String name,
+                @RequestParam("lastName") String lastName) {
+            
+            return String.format("Hello %s %s", name, lastName);
+        }
 }
