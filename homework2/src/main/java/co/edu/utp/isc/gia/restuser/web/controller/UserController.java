@@ -3,10 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package co.edu.utp.isc.gia.restuser.dto;
+package co.edu.utp.isc.gia.restuser.web.controller;
 
 import co.edu.utp.isc.gia.restuser.service.UserService;
-import co.edu.utp.isc.gia.restuser.web.UserDto;
+import co.edu.utp.isc.gia.restuser.web.dto.UserDto;
 import java.util.List;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -34,14 +34,13 @@ public class UserController {
         this.userService = userService;
     }
     
-    @PostMapping() // POST http://localhost:8080/user
+    @PostMapping // POST http://localhost:8080/user
     public ResponseEntity<String> save(@RequestBody UserDto user) {
         if (user == null) return new ResponseEntity<> ( HttpStatus.BAD_REQUEST);    
-        userService.save(user);
-        return new ResponseEntity<> ( HttpStatus.OK);
+        return new ResponseEntity( user, HttpStatus.OK);
     }
     
-    @GetMapping("/all")
+    @GetMapping
     @ResponseBody
     public ResponseEntity<List<UserDto>> listAll() {
         List<UserDto> users = userService.listAll();

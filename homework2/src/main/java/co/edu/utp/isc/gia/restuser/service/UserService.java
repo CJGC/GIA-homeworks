@@ -5,7 +5,7 @@
  */
 package co.edu.utp.isc.gia.restuser.service;
 
-import co.edu.utp.isc.gia.restuser.web.UserDto;
+import co.edu.utp.isc.gia.restuser.web.dto.UserDto;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.SortedMap;
