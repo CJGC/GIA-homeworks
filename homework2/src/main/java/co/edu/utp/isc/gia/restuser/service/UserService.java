@@ -40,6 +40,7 @@ public class UserService {
     }
     
     public UserDto update(long id, UserDto user) {
+        user.setId(id);
         return users.replace(id, user);
     }
     
