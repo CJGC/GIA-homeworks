@@ -8,6 +8,8 @@ package co.edu.utp.isc.gia.restuser.service;
 import co.edu.utp.isc.gia.restuser.web.UserDto;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.SortedMap;
+import java.util.TreeMap;
 import org.springframework.stereotype.Service;
 
 /**
@@ -16,23 +18,32 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class UserService {
-        private List<UserDto> users = new ArrayList<>();
-
+    
+    SortedMap<Long, UserDto> users = new TreeMap<>(); 
         
-    public UserDto save( UserDto user) {
-        user.setId(users.size() + 1L);
+    public UserDto save(UserDto user) {
+        if (users.isEmpty()) user.setId(1L);
+        else user.setId(users.lastKey() + 1L);
         user.setUsername(user.getUsername().toLowerCase());
-        users.add(user);
-        return user;
+        return users.put(user.getId(), user);
     }
     
     public List<UserDto> listAll() {
-        return users;
+        if (users.isEmpty()) return null;
+        
+        ArrayList<UserDto> valueList = new ArrayList<>(users.values());
+        return valueList;
     }
     
-    public UserDto findOne(
-             Long id
-    ) {
-        return users.get(id.intValue() - 1);
+    public UserDto findOne(Long id) {
+        return users.get(id);       
+    }
+    
+    public UserDto update(long id, UserDto user) {
+        return users.replace(id, user);
+    }
+    
+    public UserDto delete(Long id) {
+        return users.remove(id);
     }
 }
