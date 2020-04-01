@@ -35,47 +35,43 @@ public class UserController {
     }
     
     @PostMapping // POST http://localhost:8080/user
-    public ResponseEntity<String> save(@RequestBody UserDto user) {
+    public ResponseEntity<UserDto> save(@RequestBody UserDto user) {
         if (user == null) return new ResponseEntity<> ( HttpStatus.BAD_REQUEST);
         userService.save(user);
-        return new ResponseEntity( user, HttpStatus.OK);
+        return new ResponseEntity<>(user, HttpStatus.OK);
     }
     
     @GetMapping
-    @ResponseBody
     public ResponseEntity<List<UserDto>> listAll() {
         List<UserDto> users = userService.listAll();
         if (users == null) return new ResponseEntity(HttpStatus.NOT_FOUND);
-        return new ResponseEntity(users, HttpStatus.OK);
+        return new ResponseEntity<>(users, HttpStatus.OK);
     }
     
     @GetMapping("/{id}")
-    @ResponseBody
-    public ResponseEntity<String> findOne(
+    public ResponseEntity<UserDto> findOne(
             @PathVariable("id") Long id
     ) {
         UserDto user = userService.findOne(id);
         if (user == null) return new ResponseEntity<> ( HttpStatus.NOT_FOUND);
-        return new ResponseEntity(user, HttpStatus.OK);
+        return new ResponseEntity<>(user, HttpStatus.OK);
     }
     
     @PutMapping("/{id}")
-    @ResponseBody
-    public ResponseEntity<String> update(
+    public ResponseEntity<UserDto> update(
             @PathVariable("id") Long id,
             @RequestBody UserDto user) {
         UserDto _user = userService.update(id, user);
         if (_user == null) return new ResponseEntity<> (HttpStatus.NOT_FOUND);
-        return new ResponseEntity(_user, HttpStatus.OK);
+        return new ResponseEntity<>(_user, HttpStatus.OK);
     }
     
     @DeleteMapping("/{id}")
-    @ResponseBody
-    public ResponseEntity<String> delete(
+    public ResponseEntity<UserDto> delete(
             @PathVariable("id") Long id) {
         UserDto _user = userService.delete(id);
         if (_user == null) return new ResponseEntity<> (HttpStatus.NOT_FOUND);
-        return new ResponseEntity(_user, HttpStatus.OK);
+        return new ResponseEntity<>(_user, HttpStatus.OK);
     }
     
 }
