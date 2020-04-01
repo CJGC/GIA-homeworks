@@ -36,15 +36,17 @@ public class UserController {
     
     @PostMapping() // POST http://localhost:8080/user
     public ResponseEntity<String> save(@RequestBody UserDto user) {
-        if (user == null) return new ResponseEntity<> ( HttpStatus.BAD_REQUEST);
-        
+        if (user == null) return new ResponseEntity<> ( HttpStatus.BAD_REQUEST);    
         userService.save(user);
         return new ResponseEntity<> ( HttpStatus.OK);
     }
     
-    @GetMapping
-    public List<UserDto> listAll() {
-        return userService.listAll();
+    @GetMapping("/all")
+    @ResponseBody
+    public ResponseEntity<List<UserDto>> listAll() {
+        List<UserDto> users = userService.listAll();
+        if (users == null) return new ResponseEntity(HttpStatus.NOT_FOUND);
+        return new ResponseEntity(users, HttpStatus.OK);
     }
     
     @GetMapping("/{id}")
@@ -57,19 +59,23 @@ public class UserController {
         return new ResponseEntity(user, HttpStatus.OK);
     }
     
-    @PutMapping
+    @PutMapping("/{id}")
+    @ResponseBody
     public ResponseEntity<String> update(
+            @PathVariable("id") Long id,
             @RequestBody UserDto user) {
-        //if (userService.update(user) == null) 
-        //    return new ResponseEntity<> (HttpStatus.BAD_REQUEST);
-        
-        return new ResponseEntity<> (HttpStatus.OK);
+        UserDto _user = userService.update(id, user);
+        if (_user == null) return new ResponseEntity<> (HttpStatus.NOT_FOUND);
+        return new ResponseEntity(_user, HttpStatus.OK);
     }
     
     @DeleteMapping("/{id}")
-    public UserDto delete(
+    @ResponseBody
+    public ResponseEntity<String> delete(
             @PathVariable("id") Long id) {
-        return null;
+        UserDto _user = userService.delete(id);
+        if (_user == null) return new ResponseEntity<> (HttpStatus.NOT_FOUND);
+        return new ResponseEntity(_user, HttpStatus.OK);
     }
     
 }
