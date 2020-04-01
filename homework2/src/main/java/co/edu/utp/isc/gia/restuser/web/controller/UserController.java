@@ -36,7 +36,8 @@ public class UserController {
     
     @PostMapping // POST http://localhost:8080/user
     public ResponseEntity<String> save(@RequestBody UserDto user) {
-        if (user == null) return new ResponseEntity<> ( HttpStatus.BAD_REQUEST);    
+        if (user == null) return new ResponseEntity<> ( HttpStatus.BAD_REQUEST);
+        userService.save(user);
         return new ResponseEntity( user, HttpStatus.OK);
     }
     
