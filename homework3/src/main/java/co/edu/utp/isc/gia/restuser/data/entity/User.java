@@ -30,19 +30,9 @@ public class User implements Serializable  {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
+    private Long id;
     private String username;
     private String password;
     private String name;
-    private String email;
-
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
-
-    
+    private String email;    
 }
