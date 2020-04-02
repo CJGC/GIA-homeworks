@@ -24,43 +24,71 @@ public class UserService {
     
     private UserRepository userRepository;
     private ModelMapper modelMapper;
-    SortedMap<Long, UserDto> users = new TreeMap<>(); 
     
     public UserService(UserRepository userRepository, ModelMapper modelMapper)
     {
         this.userRepository = userRepository;
         this.modelMapper = modelMapper;
-    }    
+    }
+    
     public UserDto save(UserDto user) {
-        
-        User  myUser = modelMapper.map(user, User.class);
-        myUser = userRepository.save(myUser);
-        UserDto resp = modelMapper.map(myUser, UserDto.class);
-        
-//        return resp;
-        if (users.isEmpty()) user.setId(1L);
-        else user.setId(users.lastKey() + 1L);
-        user.setUsername(user.getUsername().toLowerCase());
-        return users.put(user.getId(), user);
+                
+        try {
+            User auxUser;
+            auxUser = userRepository.save(modelMapper.map(user, User.class));
+            return modelMapper.map(auxUser, UserDto.class);
+        }
+        catch(Exception e) {
+            System.out.println(e.getMessage());
+            return null;
+        }
     }
     
     public List<UserDto> listAll() {
-        if (users.isEmpty()) return null;
+        ArrayList<User> users = new ArrayList<>();
+        userRepository.findAll().forEach(users::add);
         
-        ArrayList<UserDto> valueList = new ArrayList<>(users.values());
-        return valueList;
+        List<UserDto> resp = new ArrayList<>();
+        users.forEach( user -> {
+            resp.add(modelMapper.map(user, UserDto.class));
+        });
+        return resp;
     }
     
     public UserDto findOne(Long id) {
-        return users.get(id);       
+        try {
+            return modelMapper.map(userRepository.findById(id).get(), 
+                UserDto.class);
+        }
+        catch(Exception e) {
+            System.out.println(e.getMessage());
+            return null;
+        }
     }
     
     public UserDto update(long id, UserDto user) {
         user.setId(id);
-        return users.replace(id, user);
+        try {
+            userRepository.save(modelMapper.map(user, User.class));
+            return user;
+        }
+        catch (Exception e) {
+            System.out.println(e.getMessage());
+            return null;
+        }
     }
     
     public UserDto delete(Long id) {
-        return users.remove(id);
+        
+        try {
+            UserDto user = modelMapper.map(userRepository.findById(id).get(), 
+                    UserDto.class);
+            userRepository.deleteById(id);
+            return user;
+        }
+        catch(Exception e){
+            System.out.println(e.getMessage());
+            return null;
+        }
     }
 }
