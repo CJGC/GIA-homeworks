@@ -1,0 +1,7 @@
+co\edu\utp\isc\gia\restuser\web\dto\UserDto.class
+co\edu\utp\isc\gia\restuser\data\repository\UserRepository.class
+co\edu\utp\isc\gia\restuser\data\entity\User.class
+co\edu\utp\isc\gia\restuser\service\UserService.class
+co\edu\utp\isc\gia\restuser\web\controller\UserController.class
+co\edu\utp\isc\gia\restuser\config\ApplicationConfig.class
+co\edu\utp\isc\gia\restuser\RestuserApplication.class
