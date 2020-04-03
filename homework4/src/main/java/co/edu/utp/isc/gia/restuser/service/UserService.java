@@ -34,8 +34,9 @@ public class UserService {
     public UserDto save(UserDto user) {
                 
         try {
-            User auxUser;
-            auxUser = userRepository.save(modelMapper.map(user, User.class));
+            user.setUsername(user.getUsername().toLowerCase());
+            User auxUser = userRepository.save(modelMapper.map(user, 
+                    User.class));
             return modelMapper.map(auxUser, UserDto.class);
         }
         catch(Exception e) {
