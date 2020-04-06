@@ -1,0 +1,21 @@
+El sistema debe permitir a los profesores configurar pruebas.
+El sistema debe permitir a los profesores configurar descripción a las pruebas.
+El sistema debe permitir a los profesores configurar la nota máxima a una prueba.
+El sistema debe permitir a los profesores configurar preguntas abiertas a las pruebas.
+El sistema debe permitir a los profesores configurar preguntas de selección múltiple con única respuestas a las pruebas
+El sistema debe permitir a los profesores configurar preguntas de selección múltiple con múltiples respuesas a las pruebas.
+El sistema debe permitir a los profesores configurar una descripción a cualquier tipo de pregunta.
+El sistema debe permitir a los profesores configurar una imagen de forma opcional a cualquier tipo de pregunta.
+El sistema debe permitir a los profesores configurar peso de calificación a cualquier tipo de pregunta.
+El sistema debe permitir publicar un enlace de las pruebas que fueron creadas por los profesores.
+El sistema debe permitir a los profesores calificar las preguntas abiertas de sus pruebas.
+El sistema debe permitir a los profesores visualizar el resultado que obtienen sus estudiantes de las pruebas.
+El sistema debe permitir asociar a un estudiante a una prueba mediante el uso del link de la prueba.
+El sistema debe permitir a los estudiantes seleccionar respuestas de las preguntas de una prueba, cuando estas sean de selección múltiple con única o múltiples opciones de respuestas.
+El sistema debe permitir a los estudiantes responder las preguntas abiertas de las pruebas.
+El sistema debe permitir dar a conocer a los estudiantes la nota definitiva de una prueba cuando todas las preguntas hayan sido calificadas.
+El sistema debe permitir dar a conocer a los estudiantes el peso o valoración de cada pregunta cuando haya finalizado una prueba.
+El sistema debe permitir a un profesor no registrado configurar su usuario en el sistema.
+El sistema debe permitir iniciar sesión a un profesor.
+El sistema debe permitir cerrar sesión a un profesor.
+El sistema debe permitir restablecer la contraseña de las cuentas de los profesores del sistema.
