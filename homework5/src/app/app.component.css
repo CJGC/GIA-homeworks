@@ -1,0 +1,32 @@
+h1 {
+    text-align: center;
+}
+
+.maintable {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 50%;
+    margin: 7% auto auto auto;
+  }
+  
+.header {
+    background-color: gray;
+    border: 1px solid black;
+    text-align: center;
+  }
+  
+.data {
+    background-color: #dddddd;
+    border: 1px solid black;
+    text-align: left;
+    padding: 2px;
+}
+
+th, td {
+    border : 1px solid black;
+    padding: 8px;
+}
+
+  /* tr:nth-child(even) {
+    background-color: #dddddd;
+  } */
