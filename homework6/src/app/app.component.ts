@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { User } from './data/entity/user';
+import { User } from './dto/user';
+
 
 @Component({
   selector: 'hom-root',
