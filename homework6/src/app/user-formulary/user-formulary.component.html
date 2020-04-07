@@ -1,1 +1,19 @@
-<p>user-formulary works!</p>
+<span class="ui-float-label">
+    <input id="username-input" type="text" pInputText [(ngModel)]="userDto.username" />
+    <label for="username-input"> Username </label>
+</span>
+
+<span class="ui-float-label">
+    <input id="name-input" type="text" pInputText [(ngModel)]="userDto.name" />
+    <label for="name-input"> Name </label>
+</span>
+<span class="ui-float-label">
+    <input id="email-input" type="text" pInputText [(ngModel)]="userDto.email" />
+    <label for="email-input"> Email </label>
+</span>
+<span class="ui-float-label">
+    <input id="password-input" type="password" pInputText [(ngModel)]="userDto.password" />
+    <label for="password-input"> Password </label>
+</span>
+
+<p-button label="Add user" class="ui-button-info" (click)="saveUser()"></p-button>
