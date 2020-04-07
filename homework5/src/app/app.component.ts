@@ -7,7 +7,7 @@ import { User } from './data/entity/user';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'homework5';
+  title = 'Users';
 
   public users : Array<User>;
 
