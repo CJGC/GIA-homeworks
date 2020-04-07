@@ -6,11 +6,13 @@ import {ButtonModule} from 'primeng/button';
 import { AppComponent } from './app.component';
 import { UserFormularyComponent } from './user-formulary/user-formulary.component';
 import { FormsModule } from '@angular/forms';
+import { UserTableComponent } from './user-table/user-table.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    UserFormularyComponent
+    UserFormularyComponent,
+    UserTableComponent
   ],
   imports: [
     BrowserModule,
