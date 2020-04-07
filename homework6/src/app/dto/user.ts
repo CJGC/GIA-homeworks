@@ -1,11 +1,11 @@
 import {OnInit } from '@angular/core';
 
 export class User implements OnInit {
-    private id : number;
-    private username : String;
-    private password : String;
-    private name : String;
-    private email : String;
+    public id : number;
+    public username : String;
+    public password : String;
+    public name : String;
+    public email : String;
 
     constructor() { 
     }
