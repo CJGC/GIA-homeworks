@@ -5,6 +5,7 @@
             <th> Name</th>
             <th> email</th>
             <th> Password</th>
+            <th> Actions </th>
         </tr>
     </ng-template>
     <ng-template pTemplate="body" let-user>
@@ -13,6 +14,10 @@
             <td>{{user.name}}</td>
             <td>{{user.email}}</td>
             <td>{{user.password}}</td>
+            <td>
+                <p-button label="Edit" (click)="editUser(user)"></p-button>
+                <p-button label="Del" (click)="delUser(user)"></p-button>
+            </td>
         </tr>
     </ng-template>
 </p-table>
