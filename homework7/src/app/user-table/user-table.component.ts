@@ -1,20 +1,20 @@
 import { Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
 import { User } from '../dto/user';
-import { UserTableService } from './user-table.service';
+import { UserService } from '../services/user.service';
 
 
 @Component({
   selector: 'hom-user-table',
   templateUrl: './user-table.component.html',
   styleUrls: ['./user-table.component.css'],
-  providers: [UserTableService]
+  providers: [UserService]
 })
 export class UserTableComponent implements OnInit {
 
   @Input() public users : Array<User>;
   @Output() public evenEmitter : EventEmitter<User>;
 
-  constructor(private tableService : UserTableService) { 
+  constructor(private userService : UserService) { 
     this.evenEmitter = new EventEmitter<User>();
   }
 
@@ -24,7 +24,7 @@ export class UserTableComponent implements OnInit {
 
   public getUsers() {
   
-    this.tableService.getUsers().subscribe( 
+    this.userService.getUsers().subscribe( 
       res => {
         if (res != null) {
           console.log(res);
