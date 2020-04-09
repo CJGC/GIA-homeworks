@@ -16,14 +16,16 @@ export class UserService {
     return this.http.get<Array<User>>(environment.apiURL + 'user');
   }
 
-  public saveUser(user : User) : void {
-    this.http.post<User>(environment.apiURL + 'user', user).subscribe(
-      res => {
-        console.log(res);
-      }
-      , error => {
-        console.error(error.error.message);
-      }
-    );
+  public saveUser(user : User) : Observable<User> {
+    return this.http.post<User>(environment.apiURL + 'user', user);
   }
+
+  public updateUser(user : User) : Observable<User> {
+    return this.http.put<User>(environment.apiURL + 'user/' + user.id, user);
+  }
+
+  public delUser(user : User) : Observable<User> {
+    return this.http.delete<User>(environment.apiURL + 'user/' + user.id);
+  }
+
 }
