@@ -24,10 +24,10 @@
     </ng-template>
 
     <ng-template #updateUserBtn>
-        <p-button *ngIf="!showAddBtn" label="Confirm" class="ui-button-info" (click)="resetUser()"></p-button>
+        <p-button *ngIf="!showAddBtn" label="Confirm" class="ui-button-info" (click)="updateUser()"></p-button>
         <p-button *ngIf="!showAddBtn" label="Cancel" class="ui-button-info" (click)="cancelUpdate()"></p-button>
     </ng-template>
 
 </form>
 
-<hom-user-table [users]="users" (evenEmitter)="receiveEvent($event)"></hom-user-table>
+<hom-user-table [users]="users" (evenEmitter)="receiveUser($event)"></hom-user-table>
