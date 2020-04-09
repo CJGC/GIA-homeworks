@@ -26,7 +26,7 @@ export class UserFormularyComponent implements OnInit {
       id : ['', []],
       name : new FormControl('', [Validators.required, Validators.maxLength(100)]),
       username : new FormControl('', [Validators.required, Validators.maxLength(50)]),
-      email : new FormControl('', [Validators.required, Validators.maxLength(100)]),
+      email : new FormControl('', [Validators.required, Validators.maxLength(100), Validators.email]),
       password : new FormControl('', [Validators.required, Validators.minLength(8), Validators.maxLength(16)])
     });
     this.showAddBtn = true;
