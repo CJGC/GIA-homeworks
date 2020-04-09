@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from '../dto/user';
-import { UserTableService } from '../user-table/user-table.service';
+import { UserService } from '../services/user.service';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'hom-user-formulary',
   templateUrl: './user-formulary.component.html',
   styleUrls: ['./user-formulary.component.css'],
-  providers: [UserTableService]
+  providers: [UserService]
 })
 export class UserFormularyComponent implements OnInit {
 
@@ -20,7 +20,7 @@ export class UserFormularyComponent implements OnInit {
   public users : Array<User>;
   public showAddBtn : boolean;
 
-  constructor(private tableService : UserTableService,
+  constructor(private userService : UserService,
     private formBuilder : FormBuilder) {
     this.showAddBtn = true;
   }
@@ -43,7 +43,7 @@ export class UserFormularyComponent implements OnInit {
   }
 
   public saveUser() : void {    
-    this.tableService.saveUser(<User> this.form.value);
+    this.userService.saveUser(<User> this.form.value);
     this.resetUser();
   }
   
