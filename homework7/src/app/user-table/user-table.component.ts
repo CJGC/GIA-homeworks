@@ -19,21 +19,6 @@ export class UserTableComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getUsers();
-  }
-
-  public getUsers() {
-  
-    this.userService.getUsers().subscribe( 
-      res => {
-        if (res != null) {
-          console.log(res);
-          this.users = res;
-        }
-      }
-    ), error => {
-      console.log(error.error.message);
-    }
   }
 
   public editUser(user : User) : void {
@@ -41,7 +26,11 @@ export class UserTableComponent implements OnInit {
   }
 
   public delUser(user : User) : void {
-    let index = this.users.indexOf(user);
-    this.users.splice(index, 1);
+    this.userService.delUser(user).subscribe(
+      () => {
+        this.users.splice(this.users.indexOf(user),1);
+      },
+      error => {console.log(error.error.message);}
+    );
   }
 }
