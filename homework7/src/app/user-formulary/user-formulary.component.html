@@ -24,7 +24,7 @@
     </ng-template>
 
     <ng-template #updateUserBtn>
-        <p-button *ngIf="!showAddBtn" label="Confirm" class="ui-button-info" (click)="updateUser()"></p-button>
+        <p-button [disabled]="form.invalid" *ngIf="!showAddBtn" label="Confirm" class="ui-button-info" (click)="updateUser()"></p-button>
         <p-button *ngIf="!showAddBtn" label="Cancel" class="ui-button-info" (click)="cancelUpdate()"></p-button>
     </ng-template>
 
