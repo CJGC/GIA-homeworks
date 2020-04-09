@@ -13,10 +13,6 @@ export class UserFormularyComponent implements OnInit {
 
   //Attributes control in my form
   public form: FormGroup;
-
-
-  public userDto : User;
-  public userDtoCopy : User;
   public users : Array<User>;
   public showAddBtn : boolean;
 
@@ -33,9 +29,17 @@ export class UserFormularyComponent implements OnInit {
       email : new FormControl('', [Validators.required, Validators.maxLength(100)]),
       password : new FormControl('', [Validators.required, Validators.minLength(8), Validators.maxLength(16)])
     });
+    this.showAddBtn = true;
+    this.getUsers();
+  }
 
-    this.userDto = new User();
-    this.users = new Array<User>();
+  public getUsers() {
+    this.userService.getUsers().subscribe(
+      response => {
+        this.users = response;
+      },
+      error => {console.log(error.error);}
+    );
   }
 
   ngOnChange() {
@@ -43,36 +47,33 @@ export class UserFormularyComponent implements OnInit {
   }
 
   public saveUser() : void {    
-    this.userService.saveUser(<User> this.form.value);
-    this.resetUser();
+    this.userService.saveUser(<User> this.form.value).subscribe(
+      response => {
+        this.users.push(response);
+        this.form.reset();
+      },
+      error => {console.log(error.error.message);}
+    );
   }
   
-  public resetUser() : void {
-    this.userDto = new User();
+  public receiveUser($user) : void {
+    this.form.setValue($user);
+    this.showAddBtn = false;
+  }
+
+  public updateUser() : void {
+    this.userService.updateUser(<User> this.form.value).subscribe(
+      response => {
+        this.users.splice(this.users.indexOf(this.form.value),1,response);
+        this.form.reset();
+      },
+      error => {console.log(error.error.message);}
+    )
     this.showAddBtn = true;
   }
 
-  private makeCopy() : void {
-    this.userDtoCopy = new User();
-    this.userDtoCopy.setId(this.userDto.getId());
-    this.userDtoCopy.setUsername(this.userDto.getUsername());
-    this.userDtoCopy.setName(this.userDto.getName());
-    this.userDtoCopy.setEmail(this.userDto.getEmail());
-    this.userDtoCopy.setPassword(this.userDto.getPassword());
-  }
-
-  public receiveEvent($event) : void {
-    this.showAddBtn = false;
-    this.userDto = $event;
-    this.makeCopy();
-  }
-
   public cancelUpdate() : void {
-    this.userDto.setId(this.userDtoCopy.getId());
-    this.userDto.setUsername(this.userDtoCopy.getUsername());
-    this.userDto.setName(this.userDtoCopy.getName());
-    this.userDto.setEmail(this.userDtoCopy.getEmail());
-    this.userDto.setPassword(this.userDtoCopy.getPassword());
-    this.resetUser();
+    this.form.reset();
+    this.showAddBtn = true;
   }
 }
