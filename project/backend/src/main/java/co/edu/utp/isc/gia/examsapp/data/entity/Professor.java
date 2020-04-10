@@ -32,7 +32,9 @@ public class Professor implements Serializable  {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    private String identificationCard;
     private String username;
+    private String lastName;
     private String password;
     private String name;
     private String email;    
