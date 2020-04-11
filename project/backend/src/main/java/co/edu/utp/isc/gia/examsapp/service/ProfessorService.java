@@ -9,11 +9,10 @@ import co.edu.utp.isc.gia.examsapp.data.entity.Professor;
 import co.edu.utp.isc.gia.examsapp.web.dto.ProfessorDto;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.SortedMap;
-import java.util.TreeMap;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 import co.edu.utp.isc.gia.examsapp.data.repository.ProfessorRepository;
+import co.edu.utp.isc.gia.examsapp.validators.ProfessorValidator;
 
 /**
  *
@@ -22,41 +21,46 @@ import co.edu.utp.isc.gia.examsapp.data.repository.ProfessorRepository;
 @Service
 public class ProfessorService {
     
-    private ProfessorRepository userRepository;
-    private ModelMapper modelMapper;
+    private final ProfessorRepository userRepository;
+    private final ModelMapper modelMapper;
+    private final ProfessorValidator ProfessorValidator;
     
-    public ProfessorService(ProfessorRepository userRepository, ModelMapper modelMapper)
+    public ProfessorService(
+            ProfessorRepository userRepository, 
+            ModelMapper modelMapper,
+            ProfessorValidator professorValidator)
     {
         this.userRepository = userRepository;
         this.modelMapper = modelMapper;
+        this.ProfessorValidator = professorValidator;
     }
     
-    public ProfessorDto save(ProfessorDto user) {
-                
+    public ProfessorDto save(ProfessorDto professor) throws Exception {        
         try {
-            user.setUsername(user.getUsername().toLowerCase());
-            Professor auxUser = userRepository.save(modelMapper.map(user, 
-                    Professor.class));
-            return modelMapper.map(auxUser, ProfessorDto.class);
+            this.ProfessorValidator.setProfessor(professor);
+            this.ProfessorValidator.performValidationsExcept("id");
+            Professor auxProf = modelMapper.map(professor ,Professor.class);
+            auxProf = userRepository.save(auxProf);
+            return modelMapper.map(auxProf, ProfessorDto.class);
         }
         catch(Exception e) {
             System.out.println(e.getMessage());
-            return null;
+            throw e;
         }
     }
     
-    public List<ProfessorDto> listAll() {
-        ArrayList<Professor> users = new ArrayList<>();
-        userRepository.findAll().forEach(users::add);
+    public List<ProfessorDto> listAll() throws Exception {
+        ArrayList<Professor> professors = new ArrayList<>();
+        userRepository.findAll().forEach(professors::add);
         
-        List<ProfessorDto> resp = new ArrayList<>();
-        users.forEach(user -> {
-            resp.add(modelMapper.map(user, ProfessorDto.class));
+        List<ProfessorDto> professorsDto = new ArrayList<>();
+        professors.forEach(professor -> {
+            professorsDto.add(modelMapper.map(professor, ProfessorDto.class));
         });
-        return resp;
+        return professorsDto;
     }
     
-    public ProfessorDto findOne(Long id) {
+    public ProfessorDto findOne(Long id) throws Exception {
         try {
             return modelMapper.map(userRepository.findById(id).get(), 
                 ProfessorDto.class);
@@ -67,19 +71,21 @@ public class ProfessorService {
         }
     }
     
-    public ProfessorDto update(long id, ProfessorDto user) {
-        user.setId(id);
+    public ProfessorDto update(ProfessorDto professor) throws Exception {
         try {
-            userRepository.save(modelMapper.map(user, Professor.class));
-            return user;
+            this.ProfessorValidator.setProfessor(professor);
+            this.ProfessorValidator.performValidations();
+            Professor auxProf = userRepository.save(modelMapper.map(professor, 
+                    Professor.class));
+            return modelMapper.map(auxProf, ProfessorDto.class);
         }
         catch (Exception e) {
             System.out.println(e.getMessage());
-            return null;
+            throw e;
         }
     }
     
-    public ProfessorDto delete(Long id) {
+    public ProfessorDto delete(Long id) throws Exception {
         
         try {
             ProfessorDto user = modelMapper.map(userRepository.findById(id).get(), 
