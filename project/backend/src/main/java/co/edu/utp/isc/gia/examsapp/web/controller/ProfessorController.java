@@ -10,6 +10,7 @@ import co.edu.utp.isc.gia.examsapp.web.dto.ProfessorDto;
 import java.util.List;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -17,7 +18,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -26,52 +26,60 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @RequestMapping("user")
+@CrossOrigin(origins="*")
 public class ProfessorController {
     
-    private ProfessorService userService;
+    private final ProfessorService userService;
 
     public ProfessorController(ProfessorService userService) {
         this.userService = userService;
     }
     
     @PostMapping // POST http://localhost:8080/user
-    public ResponseEntity<ProfessorDto> save(@RequestBody ProfessorDto user) {
-        if (user == null) return new ResponseEntity<> ( HttpStatus.BAD_REQUEST);
-        user = userService.save(user);
-        return new ResponseEntity<>(user, HttpStatus.OK);
+    public ResponseEntity<?> save(@RequestBody ProfessorDto professor) throws Exception {
+        try {
+            professor = userService.save(professor);
+            return new ResponseEntity<>(professor, HttpStatus.OK);
+        }
+        catch(Exception e) {
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
+        }
     }
     
     @GetMapping
-    public ResponseEntity<List<ProfessorDto>> listAll() {
+    public ResponseEntity<?> listAll() throws Exception {
         List<ProfessorDto> users = userService.listAll();
-        if (users == null) return new ResponseEntity(HttpStatus.NOT_FOUND);
         return new ResponseEntity<>(users, HttpStatus.OK);
     }
     
     @GetMapping("/{id}")
-    public ResponseEntity<ProfessorDto> findOne(
-            @PathVariable("id") Long id
-    ) {
-        ProfessorDto user = userService.findOne(id);
-        if (user == null) return new ResponseEntity<> ( HttpStatus.NOT_FOUND);
-        return new ResponseEntity<>(user, HttpStatus.OK);
+    public ResponseEntity<?> findOne(@PathVariable("id") Long id) throws Exception {
+        ProfessorDto professor = userService.findOne(id);
+        if (professor == null) return new ResponseEntity<> ( 
+                "Professor doesn't exist", HttpStatus.NOT_FOUND);
+        return new ResponseEntity<>(professor, HttpStatus.OK);
     }
     
-    @PutMapping("/{id}")
-    public ResponseEntity<ProfessorDto> update(
-            @PathVariable("id") Long id,
-            @RequestBody ProfessorDto user) {
-        ProfessorDto _user = userService.update(id, user);
-        if (_user == null) return new ResponseEntity<> (HttpStatus.NOT_FOUND);
-        return new ResponseEntity<>(_user, HttpStatus.OK);
+    @PutMapping
+    public ResponseEntity<?> update(@RequestBody ProfessorDto professor) 
+            throws Exception {
+        ProfessorDto prof;
+        try {
+            prof = userService.update(professor);
+        }
+        catch(Exception e) {
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
+        }
+        return new ResponseEntity<>(prof, HttpStatus.OK);
     }
     
     @DeleteMapping("/{id}")
-    public ResponseEntity<ProfessorDto> delete(
-            @PathVariable("id") Long id) {
-        ProfessorDto _user = userService.delete(id);
-        if (_user == null) return new ResponseEntity<> (HttpStatus.NOT_FOUND);
-        return new ResponseEntity<>(_user, HttpStatus.OK);
+    public ResponseEntity<?> delete (@PathVariable("id") Long id)  
+            throws Exception{
+        ProfessorDto professor = userService.delete(id);
+        if (professor == null) return new ResponseEntity<>(
+                "Professor doesn't exist", HttpStatus.NOT_FOUND);
+        return new ResponseEntity<>(professor, HttpStatus.OK);
     }
     
 }
