@@ -25,7 +25,7 @@ import lombok.Setter;
 
 @AllArgsConstructor @NoArgsConstructor
 @Setter @Getter
-@Table(name = "Usuario")
+@Table(name = "Professor")
 @Entity()
 public class Professor implements Serializable  {
 
@@ -33,9 +33,9 @@ public class Professor implements Serializable  {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String identificationCard;
-    private String username;
-    private String lastName;
-    private String password;
     private String name;
-    private String email;    
+    private String lastname;
+    private String email;
+    private String username;
+    private String password;
 }
