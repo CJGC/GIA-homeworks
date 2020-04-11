@@ -1,9 +1,12 @@
-CREATE TABLE Usuario (
+CREATE TABLE Professor (
+
     id bigint auto_increment,
-    username varchar(50) not null,
-    password varchar(50),
-    name varchar(100),
+    identification_card varchar(100) not null,
+    name varchar(100) not null,
+    lastname varchar(100) not null,
     email varchar(100) not null,
+    username varchar(100) not null,
+    password varchar(100) not null,
 
     CONSTRAINT Usuario_pk PRIMARY KEY (id)
 );
