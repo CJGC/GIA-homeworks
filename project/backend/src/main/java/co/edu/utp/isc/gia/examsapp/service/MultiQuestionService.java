@@ -5,8 +5,6 @@
  */
 package co.edu.utp.isc.gia.examsapp.service;
 
-
-import co.edu.utp.isc.gia.examsapp.data.entity.Exam;
 import co.edu.utp.isc.gia.examsapp.data.entity.Question;
 import co.edu.utp.isc.gia.examsapp.data.repository.QuestionRepository;
 import co.edu.utp.isc.gia.examsapp.validators.QuestionValidator;
