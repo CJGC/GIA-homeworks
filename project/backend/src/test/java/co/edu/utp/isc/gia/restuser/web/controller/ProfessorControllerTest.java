@@ -71,7 +71,7 @@ public class ProfessorControllerTest {
     @Test
     public void testSaveProfessorNullIdentificationCard() {
         ProfessorDto professor = new ProfessorDto(null, null, "Juan carlos", 
-                "Gomez", "juant@me.co", "Janco27", "123");
+                "Gomez", "juant@me.co", "Janco27", "123",null);
         
         ResponseEntity<?> response = null;
         ResponseEntity<?> expResult = 
@@ -91,7 +91,7 @@ public class ProfessorControllerTest {
     @Test
     public void testSaveProfessorNullName() {
         ProfessorDto professor = new ProfessorDto(null, "11", null, 
-                "Gomez", "juant@me.co", "Janco27", "123");
+                "Gomez", "juant@me.co", "Janco27", "123",null);
         
         ResponseEntity<?> response = null;
         ResponseEntity<?> expResult = 
@@ -110,7 +110,7 @@ public class ProfessorControllerTest {
     @Test
     public void testSaveProfessorNullLastname() {
         ProfessorDto professor = new ProfessorDto(null, "11", "Juan Carlos", 
-                null, "juant@me.co", "Janco27", "123");
+                null, "juant@me.co", "Janco27", "123",null);
         
         ResponseEntity<?> response = null;
         ResponseEntity<?> expResult = 
@@ -129,7 +129,7 @@ public class ProfessorControllerTest {
     @Test
     public void testSaveProfessorNullEmail() {
         ProfessorDto professor = new ProfessorDto(null, "11", "Juan Carlos", 
-                "Gomez", null, "Janco27", "123");
+                "Gomez", null, "Janco27", "123",null);
         
         ResponseEntity<?> response = null;
         ResponseEntity<?> expResult = 
@@ -148,7 +148,7 @@ public class ProfessorControllerTest {
     @Test
     public void testSaveProfessorNullUsername() {
         ProfessorDto professor = new ProfessorDto(null, "11", "Juan Carlos", 
-                "Gomez", "juan@me.co", null, "123");
+                "Gomez", "juan@me.co", null, "123",null);
         
         ResponseEntity<?> response = null;
         ResponseEntity<?> expResult = 
@@ -167,7 +167,7 @@ public class ProfessorControllerTest {
     @Test
     public void testSaveProfessorNullPassword() {
         ProfessorDto professor = new ProfessorDto(null, "11", "Juan Carlos", 
-                "Gomez", "juan@me.co", "juan23", null);
+                "Gomez", "juan@me.co", "juan23", null,null);
         
         ResponseEntity<?> response = null;
         ResponseEntity<?> expResult = 
@@ -187,7 +187,7 @@ public class ProfessorControllerTest {
     @Test
     public void testSaveProfessorEmptyIdentificationCard() {
         ProfessorDto professor = new ProfessorDto(null, "", "Juan carlos", 
-                "Gomez", "juant@me.co", "Janco27", "123");
+                "Gomez", "juant@me.co", "Janco27", "123",null);
         
         ResponseEntity<?> response = null;
         ResponseEntity<?> expResult = 
@@ -206,7 +206,7 @@ public class ProfessorControllerTest {
     @Test
     public void testSaveProfessorEmptyName() {
         ProfessorDto professor = new ProfessorDto(null, "11", "", 
-                "Gomez", "juant@me.co", "Janco27", "123");
+                "Gomez", "juant@me.co", "Janco27", "123",null);
         
         ResponseEntity<?> response = null;
         ResponseEntity<?> expResult = 
@@ -225,7 +225,7 @@ public class ProfessorControllerTest {
     @Test
     public void testSaveProfessorEmptyLastname() {
         ProfessorDto professor = new ProfessorDto(null, "11", "Juan Carlos", 
-                "", "juant@me.co", "Janco27", "123");
+                "", "juant@me.co", "Janco27", "123",null);
         
         ResponseEntity<?> response = null;
         ResponseEntity<?> expResult = 
@@ -244,7 +244,7 @@ public class ProfessorControllerTest {
     @Test
     public void testSaveProfessorEmptyEmail() {
         ProfessorDto professor = new ProfessorDto(null, "11", "Juan Carlos", 
-                "Gomez", "", "Janco27", "123");
+                "Gomez", "", "Janco27", "123",null);
         
         ResponseEntity<?> response = null;
         ResponseEntity<?> expResult = 
@@ -263,7 +263,7 @@ public class ProfessorControllerTest {
     @Test
     public void testSaveProfessorEmptyUsername() {
         ProfessorDto professor = new ProfessorDto(null, "11", "Juan Carlos", 
-                "Gomez", "juan@me.co", "", "123");
+                "Gomez", "juan@me.co", "", "123",null);
         
         ResponseEntity<?> response = null;
         ResponseEntity<?> expResult = 
@@ -282,7 +282,7 @@ public class ProfessorControllerTest {
     @Test
     public void testSaveProfessorEmptyPassword() {
         ProfessorDto professor = new ProfessorDto(null, "11", "Juan Carlos", 
-                "Gomez", "juan@me.co", "juan23", "");
+                "Gomez", "juan@me.co", "juan23", "",null);
         
         ResponseEntity<?> response = null;
         ResponseEntity<?> expResult = 
@@ -301,7 +301,7 @@ public class ProfessorControllerTest {
     @Test
     public void testSaveProfessorInvalidIdentificationCard() {
         ProfessorDto professor = new ProfessorDto(null, "idcard", "Juan Carlos", 
-                "Gomez", "juan@me.co", "juan23", "juan23");
+                "Gomez", "juan@me.co", "juan23", "juan23",null);
         
         ResponseEntity<?> response = null;
         ResponseEntity<?> expResult = 
@@ -320,7 +320,7 @@ public class ProfessorControllerTest {
     @Test
     public void testSaveProfessorInvalidEmail() {
         ProfessorDto professor = new ProfessorDto(null, "11", "Juan Carlos", 
-                "Gomez", "juanme.co", "juan23", "juan23");
+                "Gomez", "juanme.co", "juan23", "juan23",null);
         
         ResponseEntity<?> response = null;
         ResponseEntity<?> expResult = 
@@ -339,7 +339,7 @@ public class ProfessorControllerTest {
     @Test
     public void testSaveProfessorInvalidPassword() {
         ProfessorDto professor = new ProfessorDto(null, "11", "Juan Carlos", 
-                "Gomez", "juan@me.co", "juan23", "12");
+                "Gomez", "juan@me.co", "juan23", "12",null);
         
         ResponseEntity<?> response = null;
         ResponseEntity<?> expResult = 
@@ -358,12 +358,12 @@ public class ProfessorControllerTest {
     @Test
     public void testSave() {
         Professor resulted = new Professor(null,"11","Juan carlos", "Gomez", 
-                "juant@me.co", "Janco27", "Juanavid");        
+                "juant@me.co", "Janco27", "Juanavid", null);
 
         when(userRepository.save(any(Professor.class))).thenReturn(resulted);
         
         ProfessorDto professor = new ProfessorDto(null,"11","Juan carlos", "Gomez", 
-                "juant@me.co", "Janco27", "Juanavid");
+                "juant@me.co", "Janco27", "Juanavid",null);
         
         ResponseEntity<?> response = null;
         ResponseEntity<?> expResult = new ResponseEntity<>(professor, HttpStatus.OK);
@@ -410,7 +410,7 @@ public class ProfessorControllerTest {
     @Test
     public void testUpdateProfessorNullIdentificationCard() {
         ProfessorDto professor = new ProfessorDto(1L, null, "Juan carlos", 
-                "Gomez", "juant@me.co", "Janco27", "123");
+                "Gomez", "juant@me.co", "Janco27", "123",null);
         
         ResponseEntity<?> response = null;
         ResponseEntity<?> expResult = 
@@ -430,7 +430,7 @@ public class ProfessorControllerTest {
     @Test
     public void testUpdateProfessorNullName() {
         ProfessorDto professor = new ProfessorDto(1L, "11", null, 
-                "Gomez", "juant@me.co", "Janco27", "123");
+                "Gomez", "juant@me.co", "Janco27", "123",null);
         
         ResponseEntity<?> response = null;
         ResponseEntity<?> expResult = 
@@ -449,7 +449,7 @@ public class ProfessorControllerTest {
     @Test
     public void testUpdateProfessorNullLastname() {
         ProfessorDto professor = new ProfessorDto(1L, "11", "Juan Carlos", 
-                null, "juant@me.co", "Janco27", "123");
+                null, "juant@me.co", "Janco27", "123",null);
         
         ResponseEntity<?> response = null;
         ResponseEntity<?> expResult = 
@@ -468,7 +468,7 @@ public class ProfessorControllerTest {
     @Test
     public void testUpdateProfessorNullEmail() {
         ProfessorDto professor = new ProfessorDto(1L, "11", "Juan Carlos", 
-                "Gomez", null, "Janco27", "123");
+                "Gomez", null, "Janco27", "123",null);
         
         ResponseEntity<?> response = null;
         ResponseEntity<?> expResult = 
@@ -487,7 +487,7 @@ public class ProfessorControllerTest {
     @Test
     public void testUpdateProfessorNullUsername() {
         ProfessorDto professor = new ProfessorDto(1L, "11", "Juan Carlos", 
-                "Gomez", "juan@me.co", null, "123");
+                "Gomez", "juan@me.co", null, "123",null);
         
         ResponseEntity<?> response = null;
         ResponseEntity<?> expResult = 
@@ -506,7 +506,7 @@ public class ProfessorControllerTest {
     @Test
     public void testUpdateProfessorNullPassword() {
         ProfessorDto professor = new ProfessorDto(1L, "11", "Juan Carlos", 
-                "Gomez", "juan@me.co", "juan23", null);
+                "Gomez", "juan@me.co", "juan23", null,null);
         
         ResponseEntity<?> response = null;
         ResponseEntity<?> expResult = 
@@ -526,7 +526,7 @@ public class ProfessorControllerTest {
     @Test
     public void testUpdateProfessorEmptyIdentificationCard() {
         ProfessorDto professor = new ProfessorDto(1L, "", "Juan carlos", 
-                "Gomez", "juant@me.co", "Janco27", "123");
+                "Gomez", "juant@me.co", "Janco27", "123",null);
         
         ResponseEntity<?> response = null;
         ResponseEntity<?> expResult = 
@@ -545,7 +545,7 @@ public class ProfessorControllerTest {
     @Test
     public void testUpdateProfessorEmptyName() {
         ProfessorDto professor = new ProfessorDto(1L, "11", "", 
-                "Gomez", "juant@me.co", "Janco27", "123");
+                "Gomez", "juant@me.co", "Janco27", "123",null);
         
         ResponseEntity<?> response = null;
         ResponseEntity<?> expResult = 
@@ -564,7 +564,7 @@ public class ProfessorControllerTest {
     @Test
     public void testUpdateProfessorEmptyLastname() {
         ProfessorDto professor = new ProfessorDto(1L, "11", "Juan Carlos", 
-                "", "juant@me.co", "Janco27", "123");
+                "", "juant@me.co", "Janco27", "123",null);
         
         ResponseEntity<?> response = null;
         ResponseEntity<?> expResult = 
@@ -583,7 +583,7 @@ public class ProfessorControllerTest {
     @Test
     public void testUpdateProfessorEmptyEmail() {
         ProfessorDto professor = new ProfessorDto(1L, "11", "Juan Carlos", 
-                "Gomez", "", "Janco27", "123");
+                "Gomez", "", "Janco27", "123",null);
         
         ResponseEntity<?> response = null;
         ResponseEntity<?> expResult = 
@@ -602,7 +602,7 @@ public class ProfessorControllerTest {
     @Test
     public void testUpdateProfessorEmptyUsername() {
         ProfessorDto professor = new ProfessorDto(1L, "11", "Juan Carlos", 
-                "Gomez", "juan@me.co", "", "123");
+                "Gomez", "juan@me.co", "", "123",null);
         
         ResponseEntity<?> response = null;
         ResponseEntity<?> expResult = 
@@ -621,7 +621,7 @@ public class ProfessorControllerTest {
     @Test
     public void testUpdateProfessorEmptyPassword() {
         ProfessorDto professor = new ProfessorDto(1L, "11", "Juan Carlos", 
-                "Gomez", "juan@me.co", "juan23", "");
+                "Gomez", "juan@me.co", "juan23", "",null);
         
         ResponseEntity<?> response = null;
         ResponseEntity<?> expResult = 
@@ -640,7 +640,7 @@ public class ProfessorControllerTest {
     @Test
     public void testUpdateProfessorNullId() {
         ProfessorDto professor = new ProfessorDto(null, "idcard", "Juan Carlos", 
-                "Gomez", "juan@me.co", "juan23", "juan23");
+                "Gomez", "juan@me.co", "juan23", "juan23",null);
         
         ResponseEntity<?> response = null;
         ResponseEntity<?> expResult = 
@@ -660,7 +660,7 @@ public class ProfessorControllerTest {
     @Test
     public void testUpdateProfessorInvalidIdentificationCard() {
         ProfessorDto professor = new ProfessorDto(1L, "idcard", "Juan Carlos", 
-                "Gomez", "juan@me.co", "juan23", "juan23");
+                "Gomez", "juan@me.co", "juan23", "juan23",null);
         
         ResponseEntity<?> response = null;
         ResponseEntity<?> expResult = 
@@ -679,7 +679,7 @@ public class ProfessorControllerTest {
     @Test
     public void testUpdateProfessorInvalidEmail() {
         ProfessorDto professor = new ProfessorDto(1L, "11", "Juan Carlos", 
-                "Gomez", "juanme.co", "juan23", "juan23");
+                "Gomez", "juanme.co", "juan23", "juan23",null);
         
         ResponseEntity<?> response = null;
         ResponseEntity<?> expResult = 
@@ -698,7 +698,7 @@ public class ProfessorControllerTest {
     @Test
     public void testUpdateProfessorInvalidPassword() {
         ProfessorDto professor = new ProfessorDto(1L, "11", "Juan Carlos", 
-                "Gomez", "juan@me.co", "juan23", "12");
+                "Gomez", "juan@me.co", "juan23", "12",null);
         
         ResponseEntity<?> response = null;
         ResponseEntity<?> expResult = 
@@ -719,12 +719,12 @@ public class ProfessorControllerTest {
     @Test
     public void testUpdate() {
         Professor resulted = new Professor(1L,"11","Juan carlos", "Gomez", 
-                "juant@me.co", "Janco27", "Juanavid");        
+                "juant@me.co", "Janco27", "Juanavid", null);
 
         when(userRepository.save(any(Professor.class))).thenReturn(resulted);
         
         ProfessorDto professor = new ProfessorDto(1L,"11","Juan carlos", "Gomez", 
-                "juant@me.co", "Janco27", "Juanavid");
+                "juant@me.co", "Janco27", "Juanavid",null);
         
         ResponseEntity<?> response = null;
         ResponseEntity<?> expResult = new ResponseEntity<>(professor, HttpStatus.OK);
@@ -772,7 +772,7 @@ public class ProfessorControllerTest {
     public void testFindOne() {
         
         Professor resulted = new Professor(1L,"11","Juan carlos", "Gomez", 
-                "juant@me.co", "Janco27", "Juanavid");
+                "juant@me.co", "Janco27", "Juanavid", null);
         Optional<Professor> op = Optional.of(resulted);
         when(userRepository.findById(any(Long.class))).thenReturn(op);
         
@@ -783,7 +783,7 @@ public class ProfessorControllerTest {
         catch (Exception e) {}
         
         ProfessorDto user = new ProfessorDto(1L,"11","Juan carlos", "Gomez", 
-                "juant@me.co", "Janco27", "Juanavid");
+                "juant@me.co", "Janco27", "Juanavid",null);
         ResponseEntity<?> expResult = new ResponseEntity<>(user, HttpStatus.OK);
         
         assertEquals(expResult.getHeaders(), response.getHeaders());
@@ -824,7 +824,7 @@ public class ProfessorControllerTest {
     public void testDelete() {
         
         Professor resulted = new Professor(1L,"11","Juan carlos", "Gomez", 
-                "juant@me.co", "Janco27", "Juanavid");
+                "juant@me.co", "Janco27", "Juanavid", null);
         Optional<Professor> op = Optional.of(resulted);
         when(userRepository.findById(any(Long.class))).thenReturn(op);
         
@@ -835,7 +835,7 @@ public class ProfessorControllerTest {
         catch (Exception e) {}
         
         ProfessorDto professor = new ProfessorDto(1L,"11","Juan carlos", "Gomez", 
-                "juant@me.co", "Janco27", "Juanavid");
+                "juant@me.co", "Janco27", "Juanavid",null);
         ResponseEntity<?> expResult = new ResponseEntity<>(professor, HttpStatus.OK);
         
         assertEquals(expResult.getHeaders(), response.getHeaders());
@@ -861,21 +861,21 @@ public class ProfessorControllerTest {
         ArrayList<Professor> resulted = new ArrayList<>();
         
         resulted.add(new Professor(1L,"11","Juan carlos", "Gomez", 
-                "juant@me.co", "Janco27", "Juanavid"));
+                "juant@me.co", "Janco27", "Juanavid", null));
         resulted.add(new Professor(2L,"12","Carlos mario", "Lopez", 
-                "carlos@me.co", "Carl727", "Carlosthebest"));
+                "carlos@me.co", "Carl727", "Carlosthebest", null));
         resulted.add(new Professor(3L,"13","Natalia", "Castano", 
-                "natalia@me.co", "Natalia50", "Nataliaalva"));
+                "natalia@me.co", "Natalia50", "Nataliaalva", null));
         
         when(userRepository.findAll()).thenReturn(resulted);
         
         ArrayList<ProfessorDto> exit = new ArrayList<>();
         exit.add(new ProfessorDto(1L,"11","Juan carlos", "Gomez", 
-                "juant@me.co", "Janco27", "Juanavid"));
+                "juant@me.co", "Janco27", "Juanavid",null));
         exit.add(new ProfessorDto(2L,"12","Carlos mario", "Lopez", 
-                "carlos@me.co", "Carl727", "Carlosthebest"));
+                "carlos@me.co", "Carl727", "Carlosthebest",null));
         exit.add(new ProfessorDto(3L,"13","Natalia", "Castano", 
-                "natalia@me.co", "Natalia50", "Nataliaalva"));
+                "natalia@me.co", "Natalia50", "Nataliaalva",null));
         
         ResponseEntity<?> expResult = new ResponseEntity<>(exit, HttpStatus.OK);
         ResponseEntity<?> result = null;
