@@ -1,6 +1,7 @@
 package co.edu.utp.isc.gia.examsapp.config;
 
 
+import co.edu.utp.isc.gia.examsapp.validators.ExamValidator;
 import co.edu.utp.isc.gia.examsapp.validators.ProfessorValidator;
 import org.modelmapper.ModelMapper;
 import org.springframework.context.annotation.Bean;
@@ -27,5 +28,10 @@ public class ApplicationConfig {
     @Bean
     public ProfessorValidator professorValidator() {
         return new ProfessorValidator();
+    }
+    
+    @Bean
+    public ExamValidator examValidator() {
+        return new ExamValidator();
     }
 }
