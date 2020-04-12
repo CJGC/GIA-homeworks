@@ -5,7 +5,9 @@
  */
 package co.edu.utp.isc.gia.examsapp.web.dto;
 
+import co.edu.utp.isc.gia.examsapp.data.entity.Exam;
 import java.io.Serializable;
+import java.util.List;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -26,4 +28,5 @@ public class ProfessorDto implements Serializable {
     private String email;
     private String username;
     private String password;
+    private List<Exam> exams; 
 }
