@@ -5,7 +5,10 @@
  */
 package co.edu.utp.isc.gia.examsapp.web.dto;
 
+import co.edu.utp.isc.gia.examsapp.data.entity.Professor;
+import co.edu.utp.isc.gia.examsapp.data.entity.Question;
 import java.io.Serializable;
+import java.util.List;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -25,5 +28,6 @@ public class ExamDto implements Serializable {
     private Double maxGrade;
     private String description;
     private Integer examtime;
-    private Long professorId;
+    private Professor professor;
+    private List<Question> questions;
 }
