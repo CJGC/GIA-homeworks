@@ -25,3 +25,16 @@ CREATE TABLE Exam (
     constraint fk_professor foreign key (professor_id)
     references Professor(id)
 );
+
+CREATE TABLE Question (
+    id bigint auto_increment,
+    question_type varchar(10) not null,
+    weight double default 0.0,
+    description varchar(2048) not null,
+    question_image image,
+    exam_id bigint,
+
+    constraint pk_question primary key (id),
+    constraint fk_exam foreign key (exam_id)
+    references Exam(id)
+);
