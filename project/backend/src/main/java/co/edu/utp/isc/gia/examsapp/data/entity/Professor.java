@@ -6,10 +6,13 @@
 package co.edu.utp.isc.gia.examsapp.data.entity;
 
 import java.io.Serializable;
+import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import lombok.AllArgsConstructor;
@@ -38,4 +41,7 @@ public class Professor implements Serializable  {
     private String email;
     private String username;
     private String password;
+    
+    @OneToMany(mappedBy="professor", cascade=CascadeType.ALL)
+    private List<Exam> exams;
 }
