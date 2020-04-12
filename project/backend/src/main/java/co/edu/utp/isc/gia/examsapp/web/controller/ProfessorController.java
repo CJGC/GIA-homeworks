@@ -25,7 +25,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @author CJ
  */
 @RestController
-@RequestMapping("user")
+@RequestMapping("professor")
 @CrossOrigin(origins="*")
 public class ProfessorController {
     
