@@ -20,6 +20,7 @@ import lombok.Setter;
 @Setter @Getter
 public abstract class QuestionDto {
     
+    private Long id; 
     private String questionType;
     private String description;
     private File image;
