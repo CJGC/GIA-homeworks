@@ -7,7 +7,6 @@ package co.edu.utp.isc.gia.examsapp.validators;
 
 
 import co.edu.utp.isc.gia.examsapp.web.dto.AnswerOptionDto;
-import co.edu.utp.isc.gia.examsapp.web.dto.abstractdto.QuestionDto;
 import java.util.regex.Pattern;
 
 /**
