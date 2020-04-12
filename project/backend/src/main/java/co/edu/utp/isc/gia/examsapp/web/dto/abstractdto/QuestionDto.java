@@ -28,5 +28,4 @@ public abstract class QuestionDto {
     private String description;
     private File questionImage;
     private Exam exam;
-    private List<AnswerOption> answerOptions;
 }
