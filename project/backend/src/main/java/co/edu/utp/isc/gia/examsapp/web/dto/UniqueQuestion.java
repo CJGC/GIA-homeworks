@@ -5,12 +5,20 @@
  */
 package co.edu.utp.isc.gia.examsapp.web.dto;
 
+import co.edu.utp.isc.gia.examsapp.data.entity.AnswerOption;
 import co.edu.utp.isc.gia.examsapp.web.dto.abstractdto.QuestionDto;
+import java.util.List;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 /**
  *
  * @author CJ
  */
+@AllArgsConstructor @NoArgsConstructor
+@Setter  @Getter
 public class UniqueQuestion extends QuestionDto {
-    
+    private List<AnswerOption> answerOptions;
 }
