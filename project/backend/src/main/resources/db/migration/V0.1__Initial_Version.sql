@@ -38,3 +38,16 @@ CREATE TABLE Question (
     constraint fk_exam foreign key (exam_id)
     references Exam(id)
 );
+
+CREATE TABLE Answer_option (
+    id bigint auto_increment,
+    index varchar(1) not null,
+    description varchar(2048) not null,
+    correct_answer boolean default false,
+    weight double default 0.0,
+    question_id bigint,
+    
+    constraint pk_asnwer_option primary key (id),
+    constraint fk_question foreign key (question_id)
+    references Question(id)
+);
