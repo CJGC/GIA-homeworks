@@ -7,6 +7,7 @@ package co.edu.utp.isc.gia.examsapp.data.entity;
 
 import java.io.File;
 import java.io.Serializable;
+import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
@@ -16,6 +17,7 @@ import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import lombok.AllArgsConstructor;
@@ -49,6 +51,7 @@ public class Question implements Serializable  {
     @JoinColumn
     private Exam exam;
     
-    
+    @OneToMany(mappedBy="question", cascade=CascadeType.ALL)
+    private List<AnswerOption> answerOption;
 
 }
