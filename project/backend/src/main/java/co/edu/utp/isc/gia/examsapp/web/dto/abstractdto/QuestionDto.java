@@ -22,9 +22,9 @@ public abstract class QuestionDto {
     
     private Long id; 
     private String questionType;
-    private String description;
-    private File image;
     private double weight;
+    private String description;
+    private File questionImage;
     private Exam exam;
     
 }
