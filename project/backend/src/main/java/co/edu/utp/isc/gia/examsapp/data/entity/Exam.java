@@ -6,10 +6,15 @@
 package co.edu.utp.isc.gia.examsapp.data.entity;
 
 import java.io.Serializable;
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import lombok.AllArgsConstructor;
@@ -25,17 +30,23 @@ import lombok.Setter;
 
 @AllArgsConstructor @NoArgsConstructor
 @Setter @Getter
-@Table(name = "Professor")
+@Table(name = "Exam")
 @Entity()
-public class Professor implements Serializable  {
+public class Exam implements Serializable  {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String identificationCard;
     private String name;
-    private String lastname;
-    private String email;
-    private String username;
-    private String password;
+    private String link;
+    
+    @Column(precision=16, scale=2)
+    private Double maxGrade;
+    private String description;
+    private Integer examtime;
+    
+    @ManyToOne(fetch = FetchType.LAZY, cascade=CascadeType.ALL)
+    @JoinColumn
+    private Professor professor;
+
 }
