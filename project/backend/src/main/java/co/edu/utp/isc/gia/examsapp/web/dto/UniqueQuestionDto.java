@@ -17,10 +17,8 @@ import lombok.Setter;
  *
  * @author CJ
  */
-
 @AllArgsConstructor @NoArgsConstructor
 @Setter  @Getter
-public class MultiQuestion extends QuestionDto{
-    
+public class UniqueQuestionDto extends QuestionDto {
     private List<AnswerOption> answerOptions;
 }

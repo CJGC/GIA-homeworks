@@ -12,6 +12,6 @@ import co.edu.utp.isc.gia.examsapp.web.dto.abstractdto.QuestionDto;
  * @author CJ
  */
 
-public class OpenQuestion extends QuestionDto {
+public class OpenQuestionDto extends QuestionDto {
     
 }
