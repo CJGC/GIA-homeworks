@@ -5,10 +5,8 @@
  */
 package co.edu.utp.isc.gia.examsapp.web.dto.abstractdto;
 
-import co.edu.utp.isc.gia.examsapp.data.entity.AnswerOption;
 import co.edu.utp.isc.gia.examsapp.data.entity.Exam;
 import java.io.File;
-import java.util.List;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
