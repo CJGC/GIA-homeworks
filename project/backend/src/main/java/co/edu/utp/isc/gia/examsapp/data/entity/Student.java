@@ -33,25 +33,18 @@ import lombok.Setter;
 
 @AllArgsConstructor @NoArgsConstructor
 @Setter @Getter
-@Table(name = "Question")
+@Table(name = "Student")
 @Entity()
-public class Question implements Serializable  {
+public class Student implements Serializable  {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String questionType;
+    private String identificationCard;
+    private String name;
+    private String lastname;
     
-    @Column(precision=16, scale=2)
-    private Double weight;
-    private String description;
-    private File questionImage;
-    
-    @ManyToOne(fetch = FetchType.LAZY, cascade=CascadeType.ALL)
-    @JoinColumn
-    private Exam exam;
-    
-    @OneToMany(mappedBy="question", cascade=CascadeType.ALL)
-    private List<AnswerOption> answerOption;
+    @OneToMany(mappedBy="student", cascade=CascadeType.ALL)
+    private List<ExamStudent> examStudent;
 
 }
