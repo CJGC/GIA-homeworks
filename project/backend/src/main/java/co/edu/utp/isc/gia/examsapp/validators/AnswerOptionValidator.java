@@ -16,11 +16,11 @@ import java.util.regex.Pattern;
 public class AnswerOptionValidator {
     private AnswerOptionDto answerOption;
 
-    public AnswerOptionDto getquestion() {
+    public AnswerOptionDto getansweroption() {
         return answerOption;
     }
 
-    public void setquestion(AnswerOptionDto answerOption) {
+    public void setansweroption(AnswerOptionDto answerOption) {
         this.answerOption = answerOption;
     }
     
