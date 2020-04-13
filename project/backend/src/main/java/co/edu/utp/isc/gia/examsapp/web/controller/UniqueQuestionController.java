@@ -56,7 +56,7 @@ public class UniqueQuestionController {
     public ResponseEntity<?> findOne(@PathVariable("id") Long id) throws Exception {
         UniqueQuestionDto uniquequestion = uniqueQuestionService.findOne(id);
         if (uniquequestion == null) return new ResponseEntity<> ( 
-                "Professor doesn't exist", HttpStatus.NOT_FOUND);
+                "Uniquequestion doesn't exist", HttpStatus.NOT_FOUND);
         return new ResponseEntity<>(uniquequestion, HttpStatus.OK);
     }
     
@@ -78,7 +78,7 @@ public class UniqueQuestionController {
             throws Exception{
         UniqueQuestionDto uniquequestion = uniqueQuestionService.delete(id);
         if (uniquequestion == null) return new ResponseEntity<>(
-                "Professor doesn't exist", HttpStatus.NOT_FOUND);
+                "Uniquequestion doesn't exist", HttpStatus.NOT_FOUND);
         return new ResponseEntity<>(uniquequestion, HttpStatus.OK);
     }
     
