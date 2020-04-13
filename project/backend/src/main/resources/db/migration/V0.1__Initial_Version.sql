@@ -54,7 +54,7 @@ CREATE TABLE Answer_option (
 
 CREATE TABLE Student (
     id bigint auto_increment,
-    indentification_card varchar(100) not null,
+    identification_card varchar(100) not null,
     name varchar(100) not null,
     lastname varchar default false,
     
