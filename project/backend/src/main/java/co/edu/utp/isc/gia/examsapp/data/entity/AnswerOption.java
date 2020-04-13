@@ -6,6 +6,7 @@
 package co.edu.utp.isc.gia.examsapp.data.entity;
 
 import java.io.Serializable;
+import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
@@ -15,6 +16,7 @@ import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import lombok.AllArgsConstructor;
@@ -43,6 +45,9 @@ public class AnswerOption implements Serializable  {
     
     @Column(precision=16, scale=2)
     private Double weight;
+    
+    @OneToMany(mappedBy="answerOption", cascade=CascadeType.ALL)
+    private List<SelectedResponse> selectedResponses;
     
     @ManyToOne(fetch = FetchType.LAZY, cascade=CascadeType.ALL)
     @JoinColumn
