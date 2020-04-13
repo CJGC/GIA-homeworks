@@ -5,7 +5,6 @@
  */
 package co.edu.utp.isc.gia.examsapp.data.entity;
 
-import java.io.File;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.CascadeType;
@@ -33,25 +32,23 @@ import lombok.Setter;
 
 @AllArgsConstructor @NoArgsConstructor
 @Setter @Getter
-@Table(name = "Question")
+@Table(name = "Exam_student")
 @Entity()
-public class Question implements Serializable  {
+public class ExamStudent implements Serializable  {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String questionType;
     
     @Column(precision=16, scale=2)
-    private Double weight;
-    private String description;
-    private File questionImage;
+    private Double definitive_grade;
     
+    @ManyToOne(fetch = FetchType.LAZY, cascade=CascadeType.ALL)
+    @JoinColumn
+    private Student student;
+
     @ManyToOne(fetch = FetchType.LAZY, cascade=CascadeType.ALL)
     @JoinColumn
     private Exam exam;
     
-    @OneToMany(mappedBy="question", cascade=CascadeType.ALL)
-    private List<AnswerOption> answerOption;
-
 }
