@@ -12,6 +12,6 @@ import org.springframework.data.repository.CrudRepository;
  *
  * @author CJ
  */
-public interface AnwerOptionRepository extends CrudRepository<AnswerOption, Long> {
+public interface AnswerOptionRepository extends CrudRepository<AnswerOption, Long> {
     
 }
