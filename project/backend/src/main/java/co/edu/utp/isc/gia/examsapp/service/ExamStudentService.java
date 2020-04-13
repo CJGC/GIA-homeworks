@@ -6,7 +6,6 @@
 package co.edu.utp.isc.gia.examsapp.service;
 
 import co.edu.utp.isc.gia.examsapp.data.entity.ExamStudent;
-import co.edu.utp.isc.gia.examsapp.data.entity.Student;
 import co.edu.utp.isc.gia.examsapp.web.dto.ExamStudentDto;
 import java.util.ArrayList;
 import java.util.List;
