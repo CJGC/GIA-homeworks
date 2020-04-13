@@ -6,13 +6,13 @@
 package co.edu.utp.isc.gia.examsapp.service;
 
 import co.edu.utp.isc.gia.examsapp.data.entity.AnswerOption;
-import co.edu.utp.isc.gia.examsapp.data.repository.AnwerOptionRepository;
 import co.edu.utp.isc.gia.examsapp.validators.AnswerOptionValidator;
 import co.edu.utp.isc.gia.examsapp.web.dto.AnswerOptionDto;
 import java.util.ArrayList;
 import java.util.List;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
+import co.edu.utp.isc.gia.examsapp.data.repository.AnswerOptionRepository;
 
 /**
  *
@@ -21,12 +21,12 @@ import org.springframework.stereotype.Service;
 @Service
 public class AnswerOptionService {
     
-    private final AnwerOptionRepository answerOptionRepository;
+    private final AnswerOptionRepository answerOptionRepository;
     private final ModelMapper modelMapper;
     private final AnswerOptionValidator answerOptionValidator;
     
     public AnswerOptionService(
-            AnwerOptionRepository answerOptionRepository, 
+            AnswerOptionRepository answerOptionRepository, 
             ModelMapper modelMapper,
             AnswerOptionValidator answerOptionValidator)
     {
