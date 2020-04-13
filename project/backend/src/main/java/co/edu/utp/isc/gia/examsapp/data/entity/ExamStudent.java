@@ -43,6 +43,9 @@ public class ExamStudent implements Serializable  {
     @Column(precision=16, scale=2)
     private Double definitive_grade;
     
+    @OneToMany(mappedBy="examStudent", cascade=CascadeType.ALL)
+    private List<OpenResponse> openResponses;
+    
     @ManyToOne(fetch = FetchType.LAZY, cascade=CascadeType.ALL)
     @JoinColumn
     private Student student;
