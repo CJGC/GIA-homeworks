@@ -22,8 +22,7 @@ CREATE TABLE Exam (
     professor_id bigint,
 
     constraint pk_exam primary key (id),
-    constraint fk_professor foreign key (professor_id)
-    references Professor(id)
+    foreign key (professor_id) references Professor(id)
 );
 
 CREATE TABLE Question (
@@ -35,8 +34,7 @@ CREATE TABLE Question (
     exam_id bigint,
 
     constraint pk_question primary key (id),
-    constraint fk_exam foreign key (exam_id)
-    references Exam(id)
+    foreign key (exam_id) references Exam(id)
 );
 
 CREATE TABLE Answer_option (
@@ -48,8 +46,7 @@ CREATE TABLE Answer_option (
     question_id bigint,
     
     constraint pk_asnwer_option primary key (id),
-    constraint fk_question foreign key (question_id)
-    references Question(id)
+    foreign key (question_id) references Question(id)
 );
 
 CREATE TABLE Student (
@@ -69,9 +66,31 @@ CREATE TABLE Exam_student (
     
     constraint pk_exam_student primary key (id),
 
-    constraint fk_exam_id foreign key (exam_id)
-    references Exam(id),
+    foreign key (exam_id) references Exam(id),
+    foreign key (student_id) references Student(id)
+);
 
-    constraint fk_student_id foreign key (student_id)
-    references Student(id)
+CREATE TABLE Open_response (
+    id bigint auto_increment,
+    content varchar(2048) not null,
+    valoration double default 0.0,
+    exam_student_id bigint,
+    question_id bigint,
+
+    constraint pk_open_response primary key (id),
+
+    foreign key (exam_student_id) references Exam_student(id),
+    foreign key (question_id) references Question(id)
+);
+
+CREATE TABLE Selected_response (
+    id bigint auto_increment,
+    valoration double default 0.0,
+    exam_student_id bigint,
+    answer_option_id bigint,
+
+    constraint pk_selected_response primary key (id),
+
+    foreign key (exam_student_id) references Exam_student(id),
+    foreign key (answer_option_id) references Answer_option(id)
 );
