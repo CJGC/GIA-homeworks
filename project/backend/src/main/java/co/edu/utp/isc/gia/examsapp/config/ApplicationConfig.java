@@ -4,8 +4,10 @@ package co.edu.utp.isc.gia.examsapp.config;
 import co.edu.utp.isc.gia.examsapp.validators.AnswerOptionValidator;
 import co.edu.utp.isc.gia.examsapp.validators.ExamStudentValidator;
 import co.edu.utp.isc.gia.examsapp.validators.ExamValidator;
+import co.edu.utp.isc.gia.examsapp.validators.OpenResponseValidator;
 import co.edu.utp.isc.gia.examsapp.validators.ProfessorValidator;
 import co.edu.utp.isc.gia.examsapp.validators.QuestionValidator;
+import co.edu.utp.isc.gia.examsapp.validators.SelectedResponseValidator;
 import co.edu.utp.isc.gia.examsapp.validators.StudentValidator;
 import org.modelmapper.ModelMapper;
 import org.springframework.context.annotation.Bean;
@@ -57,5 +59,15 @@ public class ApplicationConfig {
     @Bean
     public ExamStudentValidator examStudentValidator() {
         return new ExamStudentValidator();
+    }
+    
+    @Bean
+    public OpenResponseValidator OpenResponseValidator() {
+        return new OpenResponseValidator();
+    }
+    
+    @Bean
+    public SelectedResponseValidator SelectedResponseValidator() {
+        return new SelectedResponseValidator();
     }
 }
