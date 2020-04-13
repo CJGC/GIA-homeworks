@@ -54,4 +54,6 @@ public class Question implements Serializable  {
     @OneToMany(mappedBy="question", cascade=CascadeType.ALL)
     private List<AnswerOption> answerOption;
 
+    @OneToMany(mappedBy="question", cascade=CascadeType.ALL)
+    private List<OpenResponse> openResponse;
 }
