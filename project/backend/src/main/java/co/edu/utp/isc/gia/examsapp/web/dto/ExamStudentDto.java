@@ -6,8 +6,10 @@
 package co.edu.utp.isc.gia.examsapp.web.dto;
 
 import co.edu.utp.isc.gia.examsapp.data.entity.Exam;
+import co.edu.utp.isc.gia.examsapp.data.entity.OpenResponse;
 import co.edu.utp.isc.gia.examsapp.data.entity.Student;
 import java.io.Serializable;
+import java.util.List;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -23,6 +25,7 @@ public class ExamStudentDto implements Serializable {
     
     private Long id;
     private Double definitive_grade;
+    private List<OpenResponse> openResponses;
     private Student student;
     private Exam exam;
 }

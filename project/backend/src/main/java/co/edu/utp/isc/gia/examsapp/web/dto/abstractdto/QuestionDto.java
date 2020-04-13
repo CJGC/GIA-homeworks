@@ -5,8 +5,11 @@
  */
 package co.edu.utp.isc.gia.examsapp.web.dto.abstractdto;
 
+import co.edu.utp.isc.gia.examsapp.data.entity.AnswerOption;
 import co.edu.utp.isc.gia.examsapp.data.entity.Exam;
+import co.edu.utp.isc.gia.examsapp.data.entity.OpenResponse;
 import java.io.File;
+import java.util.List;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -20,10 +23,12 @@ import lombok.Setter;
 @Setter @Getter
 public abstract class QuestionDto {
     
-    private Long id; 
+    private Long id;
     private String questionType;
-    private double weight;
+    private Double weight;
     private String description;
     private File questionImage;
     private Exam exam;
+    private List<AnswerOption> answerOption;
+    private List<OpenResponse> openResponse;
 }

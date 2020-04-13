@@ -20,7 +20,7 @@ import lombok.Setter;
 @AllArgsConstructor @NoArgsConstructor
 @Setter @Getter
 public class OpenResponseDto implements Serializable {
-    
+
     private Long id;
     private String content;
     private Double valoration;

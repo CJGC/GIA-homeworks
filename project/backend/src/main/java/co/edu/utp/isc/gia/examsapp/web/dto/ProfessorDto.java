@@ -24,9 +24,9 @@ public class ProfessorDto implements Serializable {
     private Long id;
     private String identificationCard;
     private String name;
-    private String lastName;
+    private String lastname;
     private String email;
     private String username;
     private String password;
-    private List<Exam> exams; 
+    private List<Exam> exams;
 }

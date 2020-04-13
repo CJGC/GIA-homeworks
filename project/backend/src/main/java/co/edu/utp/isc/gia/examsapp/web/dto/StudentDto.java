@@ -24,6 +24,6 @@ public class StudentDto implements Serializable {
     private Long id;
     private String identificationCard;
     private String name;
-    private String lastName;
-    private List<ExamStudent> examStudent; 
+    private String lastname;
+    private List<ExamStudent> examStudent;
 }
