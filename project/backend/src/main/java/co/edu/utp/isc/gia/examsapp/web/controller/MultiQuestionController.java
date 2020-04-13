@@ -56,7 +56,7 @@ public class MultiQuestionController {
     public ResponseEntity<?> findOne(@PathVariable("id") Long id) throws Exception {
         MultiQuestionDto multiquestion = multiquestionService.findOne(id);
         if (multiquestion == null) return new ResponseEntity<> ( 
-                "Professor doesn't exist", HttpStatus.NOT_FOUND);
+                "Multi question doesn't exist", HttpStatus.NOT_FOUND);
         return new ResponseEntity<>(multiquestion, HttpStatus.OK);
     }
     
@@ -78,7 +78,7 @@ public class MultiQuestionController {
             throws Exception{
         MultiQuestionDto multiquestion = multiquestionService.delete(id);
         if (multiquestion == null) return new ResponseEntity<>(
-                "Professor doesn't exist", HttpStatus.NOT_FOUND);
+                "Multi question doesn't exist", HttpStatus.NOT_FOUND);
         return new ResponseEntity<>(multiquestion, HttpStatus.OK);
     }
     
