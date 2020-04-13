@@ -51,3 +51,27 @@ CREATE TABLE Answer_option (
     constraint fk_question foreign key (question_id)
     references Question(id)
 );
+
+CREATE TABLE Student (
+    id bigint auto_increment,
+    indentification_card varchar(100) not null,
+    name varchar(100) not null,
+    lastname varchar default false,
+    
+    constraint pk_student primary key (id)
+);
+
+CREATE TABLE Exam_student (
+    id bigint auto_increment,
+    exam_id bigint,
+    student_id bigint,
+    definitive_grade double default 0.0,
+    
+    constraint pk_exam_student primary key (id),
+
+    constraint fk_exam_id foreign key (exam_id)
+    references Exam(id),
+
+    constraint fk_student_id foreign key (student_id)
+    references Student(id)
+);
