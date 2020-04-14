@@ -90,7 +90,7 @@ public class ProfessorValidator {
     }
     
     public void validateExams() throws Exception {
-        if (this.examValidator.getexam() == null) return;
+        if (this.professor.getExams()== null) return;
         for (ExamDto ex : this.professor.getExams()) {
             this.examValidator.setExam(ex);
             this.examValidator.performValidationsExcept("id");

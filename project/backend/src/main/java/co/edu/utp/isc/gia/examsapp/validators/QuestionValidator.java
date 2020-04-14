@@ -60,6 +60,8 @@ public class QuestionValidator {
     }
     
     public void validateAnswerOption() throws Exception {
+        if (this.question.getAnswerOption() == null) return;
+        
         for (AnswerOptionDto ao : this.question.getAnswerOption()) {
             this.answerOptionValidator.setAnswerOption(ao);
             this.answerOptionValidator.performValidationsExcept("id");

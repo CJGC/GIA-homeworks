@@ -76,6 +76,8 @@ public class ExamValidator {
     };
     
     public void validateQuestions() throws Exception {
+        if (this.exam.getQuestions() == null) return;
+        
         for (QuestionDto qt : this.exam.getQuestions()) {
             this.questionValidator.setquestion(qt);
             this.questionValidator.performValidationsExcept("id");
