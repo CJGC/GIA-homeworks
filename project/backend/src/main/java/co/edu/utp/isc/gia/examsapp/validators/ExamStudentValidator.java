@@ -25,27 +25,27 @@ public class ExamStudentValidator {
     
     public void isNull() throws Exception {
         if (this.examStudent == null)
-            throw new Exception("examStudent object is null");
+            throw new Exception("ExamStudent object is null");
      }
     
     public void validateId() throws Exception {
         if (this.examStudent.getId() == null)
-            throw new Exception("examStudent id is null");
+            throw new Exception("ExamStudent id is null");
     }
     
     public void validateDefinitiveGrade() throws Exception {
         if (this.examStudent.getDefinitive_grade() == null)
-            throw new Exception("examStudent definitive grade is null");
+            throw new Exception("ExamStudent definitive grade is null");
     }
 
     public void validateStudent() throws Exception {
         if (this.examStudent.getStudent() == null)
-            throw new Exception("examStudent student is null");
+            throw new Exception("ExamStudent student is null");
     }
     
     public void validateExam() throws Exception {
         if (this.examStudent.getExam() == null)
-            throw new Exception("examStudent exam is null");
+            throw new Exception("ExamStudent exam is null");
     }    
     
     public void performValidationsExcept(String attribute) throws Exception {

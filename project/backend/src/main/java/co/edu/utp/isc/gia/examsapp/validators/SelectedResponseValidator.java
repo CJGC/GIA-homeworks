@@ -25,33 +25,29 @@ public class SelectedResponseValidator {
     
     public void isNull() throws Exception {
         if (this.selectedResponse == null)
-            throw new Exception("selectedResponse object is null");
+            throw new Exception("SelectedResponse object is null");
      }
     
     public void validateId() throws Exception {
         if (this.selectedResponse.getId() == null)
-            throw new Exception("selectedResponse id is null");
+            throw new Exception("SelectedResponse id is null");
     }
     
     public void validateValoration() throws Exception {
         if (this.selectedResponse.getValoration() == null)
-            throw new Exception("valoration is null");
+            throw new Exception("SelectedResponse valoration is null");
     }
 
     public void validateExamStudent() throws Exception {
         if (this.selectedResponse.getExamStudent() == null)
-            throw new Exception("examen student is null");
+            throw new Exception("SelectedResponse examenStudent is null");
     }
 
     public void validateAnswerOption() throws Exception {
         if (this.selectedResponse.getAnswerOption() == null)
-            throw new Exception("examen student is null");
+            throw new Exception("SelectedResponse answerOption is null");
     }
     
-    public void validateQuestion() throws Exception {
-        if (this.selectedResponse.getExamStudent() == null)
-            throw new Exception("question is null");
-    }    
     
     public void performValidationsExcept(String attribute) throws Exception {
         this.isNull();
@@ -59,7 +55,7 @@ public class SelectedResponseValidator {
         if (!attribute.equals("answerOption")) this.validateAnswerOption();
         if (!attribute.equals("valoration")) this.validateValoration();
         if (!attribute.equals("examstudent")) this.validateExamStudent();
-        if (!attribute.equals("question")) this.validateQuestion();
+        if (!attribute.equals("answerOption")) this.validateAnswerOption();
     }
     
     public void performValidations() throws Exception {
@@ -68,6 +64,6 @@ public class SelectedResponseValidator {
         this.validateValoration();
         this.validateExamStudent();
         this.validateAnswerOption();
-        this.validateQuestion();
+        this.validateAnswerOption();
     }
 }

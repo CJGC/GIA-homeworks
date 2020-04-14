@@ -26,19 +26,19 @@ public class OpenResponseValidator {
     
     public void isNull() throws Exception {
         if (this.openResponse == null)
-            throw new Exception("openResponse object is null");
+            throw new Exception("OpenResponse object is null");
      }
     
     public void validateId() throws Exception {
         if (this.openResponse.getId() == null)
-            throw new Exception("openResponse id is null");
+            throw new Exception("OpenResponse id is null");
     }
 
     public void validateContent() throws Exception {
         if (this.openResponse.getContent() == null)
-            throw new Exception("openResponse content is null");
+            throw new Exception("OpenResponse content is null");
         if (Pattern.matches("", this.openResponse.getContent()))
-            throw new Exception ("openResponse content is empty");
+            throw new Exception ("OpenResponse content is empty");
     }
     
     public void validateValoration() throws Exception {

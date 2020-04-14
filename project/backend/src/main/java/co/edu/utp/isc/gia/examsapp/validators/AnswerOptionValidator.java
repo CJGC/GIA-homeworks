@@ -56,7 +56,7 @@ public class AnswerOptionValidator {
     
     public void validateWeight() throws Exception {
         if (this.answerOption.getWeight() == null)
-            throw new Exception("AnswerOption is null");
+            throw new Exception("AnswerOption weight is null");
     }
     
     public void validateQuestion() throws Exception {

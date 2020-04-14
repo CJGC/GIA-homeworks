@@ -26,35 +26,35 @@ public class StudentValidator {
     
     public void isNull() throws Exception {
         if (this.student == null)
-            throw new Exception("student object is null");
+            throw new Exception("Student object is null");
      }
     
     public void validateId() throws Exception {
         if (this.student.getId() == null)
-            throw new Exception("student's id is null");
+            throw new Exception("Student's id is null");
     }
 
     public void validateIdentificationCard() throws Exception {
         if (this.student.getIdentificationCard()== null)
-            throw new Exception("student's identification card is null");
+            throw new Exception("Student's identification card is null");
         if (Pattern.matches("", this.student.getIdentificationCard()))
-            throw new Exception ("student's identification card is empty");
+            throw new Exception ("Student's identification card is empty");
         if (!Pattern.matches("[0-9]+", this.student.getIdentificationCard()))
-            throw new Exception("student's identification card is not a number");
+            throw new Exception("Student's identification card is not a number");
     }
     
     public void validateName() throws Exception {
         if (this.student.getName()== null)
-            throw new Exception("student's name is null");
+            throw new Exception("Student's name is null");
         if (Pattern.matches("", this.student.getName()))
-            throw new Exception ("student's name is empty");
+            throw new Exception ("Student's name is empty");
     }
 
     public void validateLastname() throws Exception {
         if (this.student.getLastname()== null)
-            throw new Exception("student's lastname is null");
+            throw new Exception("Student's lastname is null");
         if (Pattern.matches("", this.student.getLastname()))
-            throw new Exception ("student's lastname is empty");
+            throw new Exception ("Student's lastname is empty");
     }
     
     

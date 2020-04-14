@@ -32,24 +32,24 @@ public class QuestionValidator {
     
     public void isNull() throws Exception {
         if (this.question == null)
-            throw new Exception("question object is null");
+            throw new Exception("Question object is null");
      }
     
     public void validateId() throws Exception {
         if (this.question.getId() == null)
-            throw new Exception("question id is null");
+            throw new Exception("Question id is null");
     }
 
     public void validateQuestionType() throws Exception {
         if (this.question.getQuestionType() == null)
-            throw new Exception("question type is null");
+            throw new Exception("Question type is null");
         if (Pattern.matches("", this.question.getQuestionType()))
-            throw new Exception ("question type is empty");
+            throw new Exception ("Question questionType is empty");
     }
     
     public void validateDescription() throws Exception {
         if (this.question.getDescription() == null)
-            throw new Exception("question's description is null");
+            throw new Exception("question description is null");
         if (Pattern.matches("", this.question.getDescription()))
             throw new Exception ("question description is empty");
     }

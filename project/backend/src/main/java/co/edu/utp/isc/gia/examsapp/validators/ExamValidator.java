@@ -31,48 +31,48 @@ public class ExamValidator {
     
     public void isNull() throws Exception {
         if (this.exam == null)
-            throw new Exception("exam object is null");
+            throw new Exception("Exam object is null");
      }
     
     public void validateId() throws Exception {
         if (this.exam.getId() == null)
-            throw new Exception("exam id is null");
+            throw new Exception("Exam id is null");
     }
     
     public void validateName() throws Exception {
         if (this.exam.getName()== null)
-            throw new Exception("exam name is null");
+            throw new Exception("Exam name is null");
         if (Pattern.matches("", this.exam.getName()))
-            throw new Exception ("exam name is empty");
+            throw new Exception ("Exam name is empty");
     }
     
     public void validateLink() throws Exception {
         if (this.exam.getLink()== null)
-            throw new Exception("exam link is null");
+            throw new Exception("Exam link is null");
         if (Pattern.matches("", this.exam.getLink()))
-            throw new Exception ("exam link is empty");
+            throw new Exception ("Exam link is empty");
     }
 
     public void validateMaxGrade() throws Exception {
         if (this.exam.getMaxGrade() == null)
-            throw new Exception("exam maxgrade is null");
+            throw new Exception("Exam maxgrade is null");
     }
     
     public void validateDescription() throws Exception {
         if (this.exam.getDescription() == null)
-            throw new Exception("exam description is null");
+            throw new Exception("Exam description is null");
         if (Pattern.matches("", this.exam.getDescription()))
-            throw new Exception ("exam description is empty");
+            throw new Exception ("Exam description is empty");
     }
     
     public void validateExamtime() throws Exception {
         if (this.exam.getExamtime() == null)
-            throw new Exception("exam time is null");
+            throw new Exception("Exam examtime is null");
     }
     
     public void validateProfessor() throws Exception {
         if (this.exam.getProfessor() == null)
-            throw new Exception("exam professor is null");
+            throw new Exception("Exam professor is null");
     };
     
     public void validateQuestions() throws Exception {
@@ -81,10 +81,6 @@ public class ExamValidator {
             this.questionValidator.performValidationsExcept("id");
         }
     }
-    
-    public void validateExamStudents() throws Exception {
-        //List<ExamStudent> examStudents;
-    }    
     
     public void performValidationsExcept(String attribute) throws Exception {
         this.isNull();
