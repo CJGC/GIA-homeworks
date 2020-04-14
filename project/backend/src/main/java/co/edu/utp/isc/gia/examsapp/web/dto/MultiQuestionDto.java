@@ -7,18 +7,17 @@ package co.edu.utp.isc.gia.examsapp.web.dto;
 
 import co.edu.utp.isc.gia.examsapp.web.dto.abstractdto.QuestionDto;
 import java.util.List;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.experimental.SuperBuilder;
 
 /**
  *
  * @author CJ
  */
 
-@AllArgsConstructor @NoArgsConstructor
-@Setter  @Getter
+@Getter @Setter
+@SuperBuilder()
 public class MultiQuestionDto extends QuestionDto{
     
     private List<AnswerOptionDto> answerOptions;

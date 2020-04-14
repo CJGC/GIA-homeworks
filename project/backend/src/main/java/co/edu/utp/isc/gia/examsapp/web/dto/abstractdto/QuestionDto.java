@@ -14,13 +14,14 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.experimental.SuperBuilder;
 
 /**
  *
  * @author CJ
  */
-@AllArgsConstructor @NoArgsConstructor
 @Setter @Getter
+@SuperBuilder()
 public abstract class QuestionDto {
     
     private Long id;

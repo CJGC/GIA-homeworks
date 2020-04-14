@@ -6,12 +6,17 @@
 package co.edu.utp.isc.gia.examsapp.web.dto;
 
 import co.edu.utp.isc.gia.examsapp.web.dto.abstractdto.QuestionDto;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.experimental.SuperBuilder;
 
 /**
  *
  * @author CJ
  */
 
+@Getter @Setter
+@SuperBuilder
 public class OpenQuestionDto extends QuestionDto {
     
 }
