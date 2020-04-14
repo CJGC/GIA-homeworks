@@ -5,8 +5,11 @@
  */
 package co.edu.utp.isc.gia.examsapp.validators;
 
+import co.edu.utp.isc.gia.examsapp.data.entity.Exam;
+import co.edu.utp.isc.gia.examsapp.web.dto.ExamDto;
 import co.edu.utp.isc.gia.examsapp.web.dto.ProfessorDto;
 import java.util.regex.Pattern;
+import org.modelmapper.ModelMapper;
 
 /**
  *
@@ -14,7 +17,14 @@ import java.util.regex.Pattern;
  */
 public class ProfessorValidator {
     private ProfessorDto professor;
-
+    private final ExamValidator examValidator;
+    private final ModelMapper modelMapper;
+    
+    public ProfessorValidator() {
+        this.modelMapper = new ModelMapper();
+        this.examValidator = new ExamValidator();
+    }
+    
     public ProfessorDto getProfessor() {
         return professor;
     }
@@ -50,9 +60,9 @@ public class ProfessorValidator {
     }
 
     public void validateLastname() throws Exception {
-        if (this.professor.getLastName()== null)
+        if (this.professor.getLastname()== null)
             throw new Exception("Professor's lastname is null");
-        if (Pattern.matches("", this.professor.getLastName()))
+        if (Pattern.matches("", this.professor.getLastname()))
             throw new Exception ("Professor's lastname is empty");
     }
     
@@ -81,6 +91,13 @@ public class ProfessorValidator {
         if (!Pattern.matches("([a-zA-Z]){8,16}", 
                 this.professor.getPassword()))
             throw new Exception ("Professor's password is invalid");
+    }
+    
+    public void validateExams() throws Exception {
+        for (Exam ex : this.professor.getExams()) {
+            this.examValidator.setExam(this.modelMapper.map(ex, ExamDto.class));
+            this.examValidator.performValidationsExcept("id");
+        }
     }
     
     public void performValidationsExcept(String attribute) throws Exception {
