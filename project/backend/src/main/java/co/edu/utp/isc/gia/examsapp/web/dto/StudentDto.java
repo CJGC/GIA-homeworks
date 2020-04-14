@@ -5,7 +5,6 @@
  */
 package co.edu.utp.isc.gia.examsapp.web.dto;
 
-import co.edu.utp.isc.gia.examsapp.data.entity.ExamStudent;
 import java.io.Serializable;
 import java.util.List;
 import lombok.AllArgsConstructor;
@@ -25,5 +24,5 @@ public class StudentDto implements Serializable {
     private String identificationCard;
     private String name;
     private String lastname;
-    private List<ExamStudent> examStudent;
+    private List<ExamStudentDto> examStudent;
 }

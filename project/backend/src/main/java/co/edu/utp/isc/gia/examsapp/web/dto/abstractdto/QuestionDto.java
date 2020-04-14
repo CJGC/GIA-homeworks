@@ -5,9 +5,9 @@
  */
 package co.edu.utp.isc.gia.examsapp.web.dto.abstractdto;
 
-import co.edu.utp.isc.gia.examsapp.data.entity.AnswerOption;
-import co.edu.utp.isc.gia.examsapp.data.entity.Exam;
-import co.edu.utp.isc.gia.examsapp.data.entity.OpenResponse;
+import co.edu.utp.isc.gia.examsapp.web.dto.AnswerOptionDto;
+import co.edu.utp.isc.gia.examsapp.web.dto.ExamDto;
+import co.edu.utp.isc.gia.examsapp.web.dto.OpenResponseDto;
 import java.io.File;
 import java.util.List;
 import lombok.AllArgsConstructor;
@@ -28,7 +28,7 @@ public abstract class QuestionDto {
     private Double weight;
     private String description;
     private File questionImage;
-    private Exam exam;
-    private List<AnswerOption> answerOption;
-    private List<OpenResponse> openResponse;
+    private ExamDto exam;
+    private List<AnswerOptionDto> answerOption;
+    private List<OpenResponseDto> openResponse;
 }

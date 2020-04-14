@@ -5,8 +5,7 @@
  */
 package co.edu.utp.isc.gia.examsapp.web.dto;
 
-import co.edu.utp.isc.gia.examsapp.data.entity.Question;
-import co.edu.utp.isc.gia.examsapp.data.entity.SelectedResponse;
+import co.edu.utp.isc.gia.examsapp.web.dto.abstractdto.QuestionDto;
 import java.io.Serializable;
 import java.util.List;
 import lombok.AllArgsConstructor;
@@ -27,6 +26,6 @@ public class AnswerOptionDto implements Serializable {
     private String description;
     private Boolean correctAnswer;
     private Double weight;
-    private List<SelectedResponse> selectedResponses;
-    private Question question;
+    private List<SelectedResponseDto> selectedResponses;
+    private QuestionDto question;
 }

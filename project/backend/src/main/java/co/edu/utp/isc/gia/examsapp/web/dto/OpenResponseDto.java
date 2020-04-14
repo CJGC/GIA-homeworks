@@ -5,8 +5,7 @@
  */
 package co.edu.utp.isc.gia.examsapp.web.dto;
 
-import co.edu.utp.isc.gia.examsapp.data.entity.ExamStudent;
-import co.edu.utp.isc.gia.examsapp.data.entity.Question;
+import co.edu.utp.isc.gia.examsapp.web.dto.abstractdto.QuestionDto;
 import java.io.Serializable;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -24,6 +23,6 @@ public class OpenResponseDto implements Serializable {
     private Long id;
     private String content;
     private Double valoration;
-    private ExamStudent examStudent;
-    private Question question;
+    private ExamStudentDto examStudent;
+    private QuestionDto question;
 }

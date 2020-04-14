@@ -5,8 +5,6 @@
  */
 package co.edu.utp.isc.gia.examsapp.web.dto;
 
-import co.edu.utp.isc.gia.examsapp.data.entity.AnswerOption;
-import co.edu.utp.isc.gia.examsapp.data.entity.ExamStudent;
 import java.io.Serializable;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -23,6 +21,6 @@ public class SelectedResponseDto implements Serializable {
     
     private Long id;
     private Double valoration;
-    private ExamStudent examStudent;
-    private AnswerOption answerOption;
+    private ExamStudentDto examStudent;
+    private AnswerOptionDto answerOption;
 }

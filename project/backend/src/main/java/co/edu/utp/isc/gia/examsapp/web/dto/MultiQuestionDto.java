@@ -5,7 +5,6 @@
  */
 package co.edu.utp.isc.gia.examsapp.web.dto;
 
-import co.edu.utp.isc.gia.examsapp.data.entity.AnswerOption;
 import co.edu.utp.isc.gia.examsapp.web.dto.abstractdto.QuestionDto;
 import java.util.List;
 import lombok.AllArgsConstructor;
@@ -22,5 +21,5 @@ import lombok.Setter;
 @Setter  @Getter
 public class MultiQuestionDto extends QuestionDto{
     
-    private List<AnswerOption> answerOptions;
+    private List<AnswerOptionDto> answerOptions;
 }

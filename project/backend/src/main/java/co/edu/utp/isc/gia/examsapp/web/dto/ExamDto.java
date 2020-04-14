@@ -5,9 +5,7 @@
  */
 package co.edu.utp.isc.gia.examsapp.web.dto;
 
-import co.edu.utp.isc.gia.examsapp.data.entity.ExamStudent;
-import co.edu.utp.isc.gia.examsapp.data.entity.Professor;
-import co.edu.utp.isc.gia.examsapp.data.entity.Question;
+import co.edu.utp.isc.gia.examsapp.web.dto.abstractdto.QuestionDto;
 import java.io.Serializable;
 import java.util.List;
 import lombok.AllArgsConstructor;
@@ -29,7 +27,7 @@ public class ExamDto implements Serializable {
     private Double maxGrade;
     private String description;
     private Integer examtime;
-    private Professor professor;
-    private List<Question> questions;
-    private List<ExamStudent> examStudents;
+    private ProfessorDto professor;
+    private List<QuestionDto> questions;
+    private List<ExamStudentDto> examStudents;
 }
