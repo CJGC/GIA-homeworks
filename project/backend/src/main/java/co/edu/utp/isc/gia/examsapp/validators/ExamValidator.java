@@ -5,8 +5,11 @@
  */
 package co.edu.utp.isc.gia.examsapp.validators;
 
+import co.edu.utp.isc.gia.examsapp.data.entity.Question;
 import co.edu.utp.isc.gia.examsapp.web.dto.ExamDto;
+import co.edu.utp.isc.gia.examsapp.web.dto.abstractdto.QuestionDto;
 import java.util.regex.Pattern;
+import org.modelmapper.ModelMapper;
 
 /**
  *
@@ -14,12 +17,19 @@ import java.util.regex.Pattern;
  */
 public class ExamValidator {
     private ExamDto exam;
+    private final ModelMapper modelMapper;
+    private final QuestionValidator questionValidator;
 
+    public ExamValidator() {
+        this.modelMapper = new ModelMapper();
+        this.questionValidator = new QuestionValidator();
+    }
+    
     public ExamDto getexam() {
         return exam;
     }
 
-    public void setexam(ExamDto exam) {
+    public void setExam(ExamDto exam) {
         this.exam = exam;
     }
     
@@ -64,6 +74,23 @@ public class ExamValidator {
             throw new Exception("exam time is null");
     }
     
+    public void validateProfessor() throws Exception {
+        if (this.exam.getProfessor() == null)
+            throw new Exception("exam professor is null");
+    };
+    
+    public void validateQuestions() throws Exception {
+        for (Question qt : this.exam.getQuestions()) {
+            this.questionValidator.setquestion(this.modelMapper.map(qt, 
+                    QuestionDto.class));
+            this.questionValidator.performValidationsExcept("id");
+        }
+    }
+    
+    public void validateExamStudents() throws Exception {
+        //List<ExamStudent> examStudents;
+    }    
+    
     public void performValidationsExcept(String attribute) throws Exception {
         this.isNull();
         if (!attribute.equals("id")) this.validateId();
@@ -72,6 +99,8 @@ public class ExamValidator {
         if (!attribute.equals("maxgrade")) this.validateMaxGrade();
         if (!attribute.equals("description")) this.validateDescription();
         if (!attribute.equals("examtime")) this.validateExamtime();
+        if (!attribute.equals("professor")) validateProfessor();
+        if (!attribute.equals("questions")) this.validateQuestions();
     }
     
     public void performValidations() throws Exception {
@@ -82,5 +111,7 @@ public class ExamValidator {
         this.validateMaxGrade();
         this.validateDescription();
         this.validateExamtime();
+        validateProfessor();
+        this.validateQuestions();
     }
 }
