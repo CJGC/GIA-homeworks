@@ -6,8 +6,11 @@
 package co.edu.utp.isc.gia.examsapp.validators;
 
 
+import co.edu.utp.isc.gia.examsapp.data.entity.AnswerOption;
+import co.edu.utp.isc.gia.examsapp.web.dto.AnswerOptionDto;
 import co.edu.utp.isc.gia.examsapp.web.dto.abstractdto.QuestionDto;
 import java.util.regex.Pattern;
+import org.modelmapper.ModelMapper;
 
 /**
  *
@@ -15,7 +18,14 @@ import java.util.regex.Pattern;
  */
 public class QuestionValidator {
     private QuestionDto question;
-
+    private final ModelMapper modelMapper;
+    private final AnswerOptionValidator answerOptionValidator;
+    
+    public QuestionValidator() {
+        this.modelMapper = new ModelMapper();
+        this.answerOptionValidator = new AnswerOptionValidator();
+    }
+    
     public QuestionDto getquestion() {
         return question;
     }
@@ -31,7 +41,7 @@ public class QuestionValidator {
     
     public void validateId() throws Exception {
         if (this.question.getId() == null)
-            throw new Exception("question's id is null");
+            throw new Exception("question id is null");
     }
 
     public void validateQuestionType() throws Exception {
@@ -48,11 +58,26 @@ public class QuestionValidator {
             throw new Exception ("question description is empty");
     }
     
+    public void validateExam() throws Exception { 
+        if (this.question.getExam() == null)
+            throw new Exception("question exam is null");
+    }
+    
+    public void validateAnswerOption() throws Exception {
+        for (AnswerOption ao : this.question.getAnswerOption()) {
+            this.answerOptionValidator.setAnswerOption(
+                    this.modelMapper.map(ao, AnswerOptionDto.class));
+            this.answerOptionValidator.performValidationsExcept("id");
+        }
+    }
+    
     public void performValidationsExcept(String attribute) throws Exception {
         this.isNull();
         if (!attribute.equals("id")) this.validateId();
         if (!attribute.equals("questiontype")) this.validateQuestionType();
         if (!attribute.equals("description")) this.validateDescription();
+        if (!attribute.equals("exam")) this.validateExam();
+        if (!attribute.equals("answerOption")) this.validateAnswerOption();
     }
     
     public void performValidations() throws Exception {
@@ -60,5 +85,7 @@ public class QuestionValidator {
         this.validateId();
         this.validateQuestionType();
         this.validateDescription();
+        this.validateExam();
+        this.validateAnswerOption();
     }
 }
