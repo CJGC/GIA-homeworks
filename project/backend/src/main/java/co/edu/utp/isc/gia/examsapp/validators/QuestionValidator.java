@@ -6,11 +6,9 @@
 package co.edu.utp.isc.gia.examsapp.validators;
 
 
-import co.edu.utp.isc.gia.examsapp.data.entity.AnswerOption;
 import co.edu.utp.isc.gia.examsapp.web.dto.AnswerOptionDto;
 import co.edu.utp.isc.gia.examsapp.web.dto.abstractdto.QuestionDto;
 import java.util.regex.Pattern;
-import org.modelmapper.ModelMapper;
 
 /**
  *
@@ -18,11 +16,9 @@ import org.modelmapper.ModelMapper;
  */
 public class QuestionValidator {
     private QuestionDto question;
-    private final ModelMapper modelMapper;
     private final AnswerOptionValidator answerOptionValidator;
     
     public QuestionValidator() {
-        this.modelMapper = new ModelMapper();
         this.answerOptionValidator = new AnswerOptionValidator();
     }
     
@@ -64,9 +60,8 @@ public class QuestionValidator {
     }
     
     public void validateAnswerOption() throws Exception {
-        for (AnswerOption ao : this.question.getAnswerOption()) {
-            this.answerOptionValidator.setAnswerOption(
-                    this.modelMapper.map(ao, AnswerOptionDto.class));
+        for (AnswerOptionDto ao : this.question.getAnswerOption()) {
+            this.answerOptionValidator.setAnswerOption(ao);
             this.answerOptionValidator.performValidationsExcept("id");
         }
     }

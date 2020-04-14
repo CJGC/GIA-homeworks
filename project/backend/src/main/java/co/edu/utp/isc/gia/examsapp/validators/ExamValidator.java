@@ -5,11 +5,9 @@
  */
 package co.edu.utp.isc.gia.examsapp.validators;
 
-import co.edu.utp.isc.gia.examsapp.data.entity.Question;
 import co.edu.utp.isc.gia.examsapp.web.dto.ExamDto;
 import co.edu.utp.isc.gia.examsapp.web.dto.abstractdto.QuestionDto;
 import java.util.regex.Pattern;
-import org.modelmapper.ModelMapper;
 
 /**
  *
@@ -17,11 +15,9 @@ import org.modelmapper.ModelMapper;
  */
 public class ExamValidator {
     private ExamDto exam;
-    private final ModelMapper modelMapper;
     private final QuestionValidator questionValidator;
 
     public ExamValidator() {
-        this.modelMapper = new ModelMapper();
         this.questionValidator = new QuestionValidator();
     }
     
@@ -80,9 +76,8 @@ public class ExamValidator {
     };
     
     public void validateQuestions() throws Exception {
-        for (Question qt : this.exam.getQuestions()) {
-            this.questionValidator.setquestion(this.modelMapper.map(qt, 
-                    QuestionDto.class));
+        for (QuestionDto qt : this.exam.getQuestions()) {
+            this.questionValidator.setquestion(qt);
             this.questionValidator.performValidationsExcept("id");
         }
     }

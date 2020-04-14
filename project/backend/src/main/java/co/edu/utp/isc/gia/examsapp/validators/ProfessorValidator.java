@@ -5,11 +5,9 @@
  */
 package co.edu.utp.isc.gia.examsapp.validators;
 
-import co.edu.utp.isc.gia.examsapp.data.entity.Exam;
 import co.edu.utp.isc.gia.examsapp.web.dto.ExamDto;
 import co.edu.utp.isc.gia.examsapp.web.dto.ProfessorDto;
 import java.util.regex.Pattern;
-import org.modelmapper.ModelMapper;
 
 /**
  *
@@ -18,10 +16,8 @@ import org.modelmapper.ModelMapper;
 public class ProfessorValidator {
     private ProfessorDto professor;
     private final ExamValidator examValidator;
-    private final ModelMapper modelMapper;
     
     public ProfessorValidator() {
-        this.modelMapper = new ModelMapper();
         this.examValidator = new ExamValidator();
     }
     
@@ -94,8 +90,8 @@ public class ProfessorValidator {
     }
     
     public void validateExams() throws Exception {
-        for (Exam ex : this.professor.getExams()) {
-            this.examValidator.setExam(this.modelMapper.map(ex, ExamDto.class));
+        for (ExamDto ex : this.professor.getExams()) {
+            this.examValidator.setExam(ex);
             this.examValidator.performValidationsExcept("id");
         }
     }
