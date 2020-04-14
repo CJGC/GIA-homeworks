@@ -36,26 +36,24 @@ public class OpenResponseValidator {
 
     public void validateContent() throws Exception {
         if (this.openResponse.getContent() == null)
-            throw new Exception("openResponse's identification card is null");
+            throw new Exception("openResponse content is null");
         if (Pattern.matches("", this.openResponse.getContent()))
-            throw new Exception ("openResponse's identification card is empty");
-        if (!Pattern.matches("[0-9]+", this.openResponse.getContent()))
-            throw new Exception("openResponse's identification card is not a number");
+            throw new Exception ("openResponse content is empty");
     }
     
     public void validateValoration() throws Exception {
         if (this.openResponse.getValoration() == null)
-            throw new Exception("valoration is null");
+            throw new Exception("OpenResponse valoration is null");
     }
 
     public void validateExamStudent() throws Exception {
         if (this.openResponse.getExamStudent() == null)
-            throw new Exception("examen student is null");
+            throw new Exception("OpenResponse examen student is null");
     }
     
     public void validateQuestion() throws Exception {
         if (this.openResponse.getExamStudent() == null)
-            throw new Exception("question is null");
+            throw new Exception("OpenResponse question is null");
     }    
     
     public void performValidationsExcept(String attribute) throws Exception {
