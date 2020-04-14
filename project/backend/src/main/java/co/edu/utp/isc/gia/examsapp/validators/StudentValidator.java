@@ -51,9 +51,9 @@ public class StudentValidator {
     }
 
     public void validateLastname() throws Exception {
-        if (this.student.getLastName()== null)
+        if (this.student.getLastname()== null)
             throw new Exception("student's lastname is null");
-        if (Pattern.matches("", this.student.getLastName()))
+        if (Pattern.matches("", this.student.getLastname()))
             throw new Exception ("student's lastname is empty");
     }
     
