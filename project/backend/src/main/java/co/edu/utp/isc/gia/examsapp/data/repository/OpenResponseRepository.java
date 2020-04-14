@@ -5,13 +5,13 @@
  */
 package co.edu.utp.isc.gia.examsapp.data.repository;
 
-import co.edu.utp.isc.gia.examsapp.data.entity.Student;
+import co.edu.utp.isc.gia.examsapp.data.entity.OpenResponse;
 import org.springframework.data.repository.CrudRepository;
 
 /**
  *
  * @author CJ
  */
-public interface OpenResponseRepository extends CrudRepository<Student, Long> {
+public interface OpenResponseRepository extends CrudRepository<OpenResponse, Long> {
     
 }
