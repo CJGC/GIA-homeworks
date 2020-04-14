@@ -351,7 +351,6 @@ public class ProfessorControllerTest {
         }
         catch(Exception e) {
         }
-        //Professor's identification card is not a number
         assertEquals(response, expResult);
     }    
     
@@ -381,7 +380,7 @@ public class ProfessorControllerTest {
         assertEquals(bodyFromResponse.getId(), bodyFromExpResult.getId());
         assertEquals(bodyFromResponse.getIdentificationCard(), bodyFromExpResult.getIdentificationCard());
         assertEquals(bodyFromResponse.getName(), bodyFromExpResult.getName());
-        assertEquals(bodyFromResponse.getLastName(), bodyFromExpResult.getLastName());
+        assertEquals(bodyFromResponse.getLastname(), bodyFromExpResult.getLastname());
         assertEquals(bodyFromResponse.getEmail(), bodyFromExpResult.getEmail());
         assertEquals(bodyFromResponse.getUsername(), bodyFromExpResult.getUsername());
         assertEquals(bodyFromResponse.getPassword(), bodyFromExpResult.getPassword());
@@ -742,7 +741,7 @@ public class ProfessorControllerTest {
         assertEquals(bodyFromResponse.getId(), bodyFromExpResult.getId());
         assertEquals(bodyFromResponse.getIdentificationCard(), bodyFromExpResult.getIdentificationCard());
         assertEquals(bodyFromResponse.getName(), bodyFromExpResult.getName());
-        assertEquals(bodyFromResponse.getLastName(), bodyFromExpResult.getLastName());
+        assertEquals(bodyFromResponse.getLastname(), bodyFromExpResult.getLastname());
         assertEquals(bodyFromResponse.getEmail(), bodyFromExpResult.getEmail());
         assertEquals(bodyFromResponse.getUsername(), bodyFromExpResult.getUsername());
         assertEquals(bodyFromResponse.getPassword(), bodyFromExpResult.getPassword());
@@ -794,7 +793,7 @@ public class ProfessorControllerTest {
         assertEquals(bodyFromResponse.getId(), bodyFromExpResult.getId());
         assertEquals(bodyFromResponse.getIdentificationCard(), bodyFromExpResult.getIdentificationCard());
         assertEquals(bodyFromResponse.getName(), bodyFromExpResult.getName());
-        assertEquals(bodyFromResponse.getLastName(), bodyFromExpResult.getLastName());
+        assertEquals(bodyFromResponse.getLastname(), bodyFromExpResult.getLastname());
         assertEquals(bodyFromResponse.getEmail(), bodyFromExpResult.getEmail());
         assertEquals(bodyFromResponse.getUsername(), bodyFromExpResult.getUsername());
         assertEquals(bodyFromResponse.getPassword(), bodyFromExpResult.getPassword());
@@ -846,7 +845,7 @@ public class ProfessorControllerTest {
         assertEquals(bodyFromResponse.getId(), bodyFromExpResult.getId());
         assertEquals(bodyFromResponse.getIdentificationCard(), bodyFromExpResult.getIdentificationCard());
         assertEquals(bodyFromResponse.getName(), bodyFromExpResult.getName());
-        assertEquals(bodyFromResponse.getLastName(), bodyFromExpResult.getLastName());
+        assertEquals(bodyFromResponse.getLastname(), bodyFromExpResult.getLastname());
         assertEquals(bodyFromResponse.getEmail(), bodyFromExpResult.getEmail());
         assertEquals(bodyFromResponse.getUsername(), bodyFromExpResult.getUsername());
         assertEquals(bodyFromResponse.getPassword(), bodyFromExpResult.getPassword());
@@ -897,6 +896,8 @@ public class ProfessorControllerTest {
                     BodyfromResult.get(i).getPassword());
             assertEquals(BodyfromExpResult.get(i).getName(), 
                     BodyfromResult.get(i).getName());
+            assertEquals(BodyfromExpResult.get(i).getLastname(), 
+                    BodyfromResult.get(i).getLastname());
             assertEquals(BodyfromExpResult.get(i).getEmail(), 
                     BodyfromResult.get(i).getEmail());
         }
