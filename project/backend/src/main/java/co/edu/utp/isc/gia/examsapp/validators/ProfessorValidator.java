@@ -109,6 +109,7 @@ public class ProfessorValidator {
         if (!attribute.equals("email")) this.validateEmail();
         if (!attribute.equals("username")) this.validateUsername();
         if (!attribute.equals("password")) this.validatePassword();
+        if (!attribute.equals("exams")) this.validateExams();
     }
     
     public void performValidations() throws Exception {
@@ -120,5 +121,6 @@ public class ProfessorValidator {
         this.validateEmail();
         this.validateUsername();
         this.validatePassword();
+        this.validateExams();
     }
 }
