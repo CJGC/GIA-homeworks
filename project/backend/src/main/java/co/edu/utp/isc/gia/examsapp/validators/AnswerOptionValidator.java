@@ -5,13 +5,8 @@
  */
 package co.edu.utp.isc.gia.examsapp.validators;
 
-
-import co.edu.utp.isc.gia.examsapp.data.entity.SelectedResponse;
 import co.edu.utp.isc.gia.examsapp.web.dto.AnswerOptionDto;
-import co.edu.utp.isc.gia.examsapp.web.dto.SelectedResponseDto;
-import co.edu.utp.isc.gia.examsapp.web.dto.abstractdto.QuestionDto;
 import java.util.regex.Pattern;
-import org.modelmapper.ModelMapper;
 
 /**
  *
@@ -19,15 +14,8 @@ import org.modelmapper.ModelMapper;
  */
 public class AnswerOptionValidator {
     private AnswerOptionDto answerOption;
-    private final SelectedResponseValidator selecRespValidator;
-    private final QuestionValidator questionValidator;
-    private final ModelMapper modelMapper;
     
-    public AnswerOptionValidator(ModelMapper modelMapper) {
-        this.modelMapper = modelMapper;
-        this.selecRespValidator = new SelectedResponseValidator();
-        this.questionValidator = new QuestionValidator();
-    }
+    public AnswerOptionValidator() {  }
 
     public AnswerOptionDto getAnswerOption() {
         return answerOption;
@@ -71,20 +59,9 @@ public class AnswerOptionValidator {
             throw new Exception("AnswerOption is null");
     }
     
-    public void validateSelectedResponses() throws Exception {
-        
-        for (SelectedResponse sr : this.answerOption.getSelectedResponses()) {
-            selecRespValidator.setselectedResponse(this.modelMapper.map(sr, 
-                    SelectedResponseDto.class));
-            selecRespValidator.performValidationsExcept("id");
-        }
-    }
-
     public void validateQuestion() throws Exception {
         if (this.answerOption.getQuestion() == null)
             throw new Exception("AnswerOption question is null");
-        this.questionValidator.setquestion(this.modelMapper.map(
-        this.answerOption.getQuestion(), QuestionDto.class));
     }
     
     public void performValidationsExcept(String attribute) throws Exception {
@@ -94,7 +71,6 @@ public class AnswerOptionValidator {
         if (!attribute.equals("description")) this.validateDescription();
         if (!attribute.equals("correctAnswer")) this.validateCorrectAnswer();
         if (!attribute.equals("weight")) this.validateWeight();
-        if (!attribute.equals("selectedResponses")) this.validateSelectedResponses();
         if (!attribute.equals("question")) this.validateQuestion();
     }
     
@@ -104,7 +80,6 @@ public class AnswerOptionValidator {
         this.validateDescription();
         this.validateCorrectAnswer();
         this.validateWeight();
-        this.validateSelectedResponses();
         this.validateQuestion();
     }
 }
