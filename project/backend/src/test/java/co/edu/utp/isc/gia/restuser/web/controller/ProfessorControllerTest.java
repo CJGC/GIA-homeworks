@@ -23,6 +23,12 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import co.edu.utp.isc.gia.examsapp.data.repository.ProfessorRepository;
 import co.edu.utp.isc.gia.examsapp.validators.ProfessorValidator;
+import co.edu.utp.isc.gia.examsapp.web.dto.AnswerOptionDto;
+import co.edu.utp.isc.gia.examsapp.web.dto.ExamDto;
+import co.edu.utp.isc.gia.examsapp.web.dto.MultiQuestionDto;
+import co.edu.utp.isc.gia.examsapp.web.dto.OpenQuestionDto;
+import co.edu.utp.isc.gia.examsapp.web.dto.UniqueQuestionDto;
+import co.edu.utp.isc.gia.examsapp.web.dto.abstractdto.QuestionDto;
 
 
 /**
@@ -377,6 +383,145 @@ public class ProfessorControllerTest {
         ProfessorDto bodyFromResponse = (ProfessorDto) response.getBody();
         ProfessorDto bodyFromExpResult = (ProfessorDto) expResult.getBody();
         
+        assertEquals(bodyFromResponse.getId(), bodyFromExpResult.getId());
+        assertEquals(bodyFromResponse.getIdentificationCard(), bodyFromExpResult.getIdentificationCard());
+        assertEquals(bodyFromResponse.getName(), bodyFromExpResult.getName());
+        assertEquals(bodyFromResponse.getLastname(), bodyFromExpResult.getLastname());
+        assertEquals(bodyFromResponse.getEmail(), bodyFromExpResult.getEmail());
+        assertEquals(bodyFromResponse.getUsername(), bodyFromExpResult.getUsername());
+        assertEquals(bodyFromResponse.getPassword(), bodyFromExpResult.getPassword());
+    }
+
+    @Test
+    public void testSaveWithExams() {
+        List<ExamDto> exams = new ArrayList<>();
+        
+        ProfessorDto professorDto = new ProfessorDto(null,"11","Juan carlos", "Gomez", 
+                "juant@me.co", "Janco27", "Juanavid",null);
+        exams.add(new ExamDto(1L,"Exam1","https://www.test.com",5.0,
+                "This exams will test your skills",0, professorDto, null,null
+        ));
+        
+        professorDto.setExams(exams);
+        Professor resulted = new Professor(null, "11", "Juan carlos", "Gomez", 
+                "juant@me.co", "Janco27", "Juanavid", null);
+
+        when(userRepository.save(any(Professor.class))).thenReturn(resulted);
+        
+        ResponseEntity<?> response = null;
+        ResponseEntity<?> expResult = new ResponseEntity<>(professorDto, HttpStatus.OK);
+        try {
+            response = userController.save(professorDto);
+            
+        }
+        catch(Exception e) {
+            e.getMessage();
+        }
+        
+        assertEquals(response.getHeaders(), expResult.getHeaders());
+        ProfessorDto bodyFromResponse = (ProfessorDto) response.getBody();
+        ProfessorDto bodyFromExpResult = (ProfessorDto) expResult.getBody();
+        assertEquals(bodyFromResponse.getId(), bodyFromExpResult.getId());
+        assertEquals(bodyFromResponse.getIdentificationCard(), bodyFromExpResult.getIdentificationCard());
+        assertEquals(bodyFromResponse.getName(), bodyFromExpResult.getName());
+        assertEquals(bodyFromResponse.getLastname(), bodyFromExpResult.getLastname());
+        assertEquals(bodyFromResponse.getEmail(), bodyFromExpResult.getEmail());
+        assertEquals(bodyFromResponse.getUsername(), bodyFromExpResult.getUsername());
+        assertEquals(bodyFromResponse.getPassword(), bodyFromExpResult.getPassword());
+    }
+    
+    @Test
+    public void testSaveWithExamsQuestions() {
+        List<ExamDto> exams = new ArrayList<>();
+        
+        ProfessorDto professorDto = new ProfessorDto(null,"11","Juan carlos", "Gomez", 
+                "juant@me.co", "Janco27", "Juanavid", null);
+        
+        // defining asnwer options for multiquestions
+        List<AnswerOptionDto> mulQuestAnswerOptions = new ArrayList<>();
+                
+        // defining multiquestion
+        MultiQuestionDto multiQuestion = MultiQuestionDto.builder()
+            .id(1L).questionType("multiple").weight(0.1)
+            .description("How do you expect great results if you do not build unitary test?")
+            .questionImage(null).exam(null).answerOption(mulQuestAnswerOptions).
+            openResponse(null).build();
+        
+        mulQuestAnswerOptions.add(new AnswerOptionDto(1L, "a", "Making the things work well",
+        false, 0.0, null, multiQuestion));
+
+        mulQuestAnswerOptions.add(new AnswerOptionDto(2L, "b", "Making the unitary test",
+        true, 1.0, null, multiQuestion));
+        
+        mulQuestAnswerOptions.add(new AnswerOptionDto(3L, "c", "Making the integration test",
+        false, 0.0, null, multiQuestion));
+        
+        multiQuestion.setAnswerOption(mulQuestAnswerOptions);
+        
+        // defining asnwer options for multiquestions
+        List<AnswerOptionDto> uniQuestAnswerOptions = new ArrayList<>();
+        
+        // defining uniquestion
+        UniqueQuestionDto uniqueQuestion = UniqueQuestionDto.builder()
+        .id(Long.MIN_VALUE).questionType("multiple").weight(0.1)
+            .description("What is the speed light?")
+            .questionImage(null).exam(null).answerOption(uniQuestAnswerOptions).
+            openResponse(null).build();
+        
+        // defining answer options for uniquequestion
+        uniQuestAnswerOptions.add(new AnswerOptionDto(4L, "a", "299 792 458 m/s",
+        true, 0.0, null, uniqueQuestion));
+
+        uniQuestAnswerOptions.add(new AnswerOptionDto(5L, "b", "299 792 458 km/s",
+        false, 1.0, null, uniqueQuestion));
+        
+        uniQuestAnswerOptions.add(new AnswerOptionDto(6L, "c", "299 792 457 km/s",
+        false, 0.0, null, uniqueQuestion));
+        
+        uniqueQuestion.setAnswerOption(uniQuestAnswerOptions);
+        
+        // defining open question
+        OpenQuestionDto openQuestion = OpenQuestionDto.builder()
+            .id(Long.MIN_VALUE).questionType("multiple").weight(0.1)
+            .description("What is causing the expansion of the universe?")
+            .questionImage(null).exam(null)
+            .answerOption(null).openResponse(null).build();
+        
+        // adding questions (multi, one, open)
+        List<QuestionDto> questions = new ArrayList<>();
+        questions.add(uniqueQuestion);
+        questions.add(multiQuestion);
+        questions.add(openQuestion);
+
+        // adding questions to the exam
+        ExamDto exam = new ExamDto(1L,"Exam1","https://www.test.com",5.0,
+                "This exams will test your skills",0, professorDto, questions, 
+                null);
+        exams.add(exam);
+        
+        professorDto.setExams(exams);
+        multiQuestion.setExam(exam);
+        uniqueQuestion.setExam(exam);
+        openQuestion.setExam(exam);
+        
+        Professor resulted = new Professor(null, "11", "Juan carlos", "Gomez", 
+                "juant@me.co", "Janco27", "Juanavid", null);
+
+        when(userRepository.save(any(Professor.class))).thenReturn(resulted);
+        
+        ResponseEntity<?> response = null;
+        ResponseEntity<?> expResult = new ResponseEntity<>(professorDto, HttpStatus.OK);
+        try {
+            response = userController.save(professorDto);
+            
+        }
+        catch(Exception e) {
+            e.getMessage();
+        }
+        
+        assertEquals(response.getHeaders(), expResult.getHeaders());
+        ProfessorDto bodyFromResponse = (ProfessorDto) response.getBody();
+        ProfessorDto bodyFromExpResult = (ProfessorDto) expResult.getBody();
         assertEquals(bodyFromResponse.getId(), bodyFromExpResult.getId());
         assertEquals(bodyFromResponse.getIdentificationCard(), bodyFromExpResult.getIdentificationCard());
         assertEquals(bodyFromResponse.getName(), bodyFromExpResult.getName());
