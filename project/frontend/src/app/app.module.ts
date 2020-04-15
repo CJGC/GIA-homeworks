@@ -6,7 +6,7 @@ import {ButtonModule} from 'primeng/button';
 import {HttpClientModule} from '@angular/common/http';
 
 import { AppComponent } from './app.component';
-import { ProfessorFormularyComponent } from './user-formulary/professor-formulary.component';
+import { ProfessorFormularyComponent } from './professor-formulary/professor-formulary.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UserTableComponent } from './user-table/user-table.component';
 
