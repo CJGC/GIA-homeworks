@@ -21,7 +21,7 @@ import lombok.Setter;
 public class ExamStudentDto implements Serializable {
     
     private Long id;
-    private Double definitive_grade;
+    private Double definitiveGrade;
     private List<OpenResponseDto> openResponses;
     private StudentDto student;
     private ExamDto exam;
