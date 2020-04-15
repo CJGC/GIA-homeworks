@@ -34,7 +34,7 @@ public class ExamStudentValidator {
     }
     
     public void validateDefinitiveGrade() throws Exception {
-        if (this.examStudent.getDefinitive_grade() == null)
+        if (this.examStudent.getDefinitiveGrade() == null)
             throw new Exception("ExamStudent definitive grade is null");
     }
 
