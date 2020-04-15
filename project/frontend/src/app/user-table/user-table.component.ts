@@ -1,34 +1,34 @@
 import { Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
-import { User } from '../dto/user';
-import { UserService } from '../services/user.service';
+import { ProfessorDto } from '../dto/ProfessorDto';
+import { ProfessorService } from '../services/Professsor.service';
 
 
 @Component({
   selector: 'hom-user-table',
   templateUrl: './user-table.component.html',
   styleUrls: ['./user-table.component.css'],
-  providers: [UserService]
+  providers: [ProfessorService]
 })
 export class UserTableComponent implements OnInit {
 
-  @Input() public users : Array<User>;
-  @Output() public evenEmitter : EventEmitter<User>;
+  @Input() public professors : Array<ProfessorDto>;
+  @Output() public evenEmitter : EventEmitter<ProfessorDto>;
 
-  constructor(private userService : UserService) { 
-    this.evenEmitter = new EventEmitter<User>();
+  constructor(private professorService : ProfessorService) { 
+    this.evenEmitter = new EventEmitter<ProfessorDto>();
   }
 
   ngOnInit(): void {
   }
 
-  public editUser(user : User) : void {
+  public editUser(user : ProfessorDto) : void {
     this.evenEmitter.emit(user);
   }
 
-  public delUser(user : User) : void {
-    this.userService.delUser(user).subscribe(
+  public delUser(user : ProfessorDto) : void {
+    this.professorService.delProfessor(user).subscribe(
       () => {
-        this.users.splice(this.users.indexOf(user),1);
+        this.professors.splice(this.professors.indexOf(user),1);
       },
       error => {console.log(error.error.message);}
     );
