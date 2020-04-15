@@ -4,13 +4,13 @@ import { SelectedResponseDto } from './SelectedResponseDto';
 import { OpenQuestionDto } from './OpenQuestionDto';
 
 export class AnswerOptionDto implements OnInit {
-    private id : number;
-    private index : String;
-    private description : String;
-    private correctAnswer : Boolean;
-    private weight : number;
-    private selectedResponses : Array<SelectedResponseDto>;
-    private question : QuestionDto;
+    public id : number;
+    public index : String;
+    public description : String;
+    public correctAnswer : Boolean;
+    public weight : number;
+    public selectedResponses : Array<SelectedResponseDto>;
+    public question : QuestionDto;
 
     ngOnInit() {
         this.id = 0;
