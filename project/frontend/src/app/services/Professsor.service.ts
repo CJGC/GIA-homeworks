@@ -20,7 +20,7 @@ export class ProfessorService {
   }
 
   public updateProfessor(professor : ProfessorDto) : Observable<ProfessorDto> {
-    return this.http.put<ProfessorDto>(environment.apiURL + 'professor/', professor);
+    return this.http.put<ProfessorDto>(environment.apiURL + 'professor', professor);
   }
 
   public delProfessor(professor : ProfessorDto) : Observable<ProfessorDto> {
