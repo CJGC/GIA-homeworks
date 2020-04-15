@@ -41,7 +41,7 @@ public class ExamStudent implements Serializable  {
     private Long id;
     
     @Column(precision=16, scale=2)
-    private Double definitive_grade;
+    private Double definitiveGrade;
     
     @OneToMany(mappedBy="examStudent", cascade=CascadeType.ALL)
     private List<OpenResponse> openResponses;
