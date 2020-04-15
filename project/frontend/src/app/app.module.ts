@@ -6,14 +6,14 @@ import {ButtonModule} from 'primeng/button';
 import {HttpClientModule} from '@angular/common/http';
 
 import { AppComponent } from './app.component';
-import { UserFormularyComponent } from './user-formulary/user-formulary.component';
+import { ProfessorFormularyComponent } from './user-formulary/professor-formulary.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UserTableComponent } from './user-table/user-table.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    UserFormularyComponent,
+    ProfessorFormularyComponent,
     UserTableComponent
   ],
   imports: [
