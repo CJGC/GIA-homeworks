@@ -11,19 +11,19 @@ export class OpenResponseService {
 
   constructor(private http : HttpClient) { }
 
-  public getProfessors() : Observable<Array<OpenResponseDto>> {
+  public getOpenResponses() : Observable<Array<OpenResponseDto>> {
     return this.http.get<Array<OpenResponseDto>>(environment.apiURL + 'openResponse');
   }
 
-  public saveProfessor(openResponse : OpenResponseDto) : Observable<OpenResponseDto> {
+  public saveOpenResponse(openResponse : OpenResponseDto) : Observable<OpenResponseDto> {
     return this.http.post<OpenResponseDto>(environment.apiURL + 'openResponse', openResponse);
   }
 
-  public updateProfessor(openResponse : OpenResponseDto) : Observable<OpenResponseDto> {
+  public updateOpenResponse(openResponse : OpenResponseDto) : Observable<OpenResponseDto> {
     return this.http.put<OpenResponseDto>(environment.apiURL + 'openResponse', openResponse);
   }
 
-  public delProfessor(openResponse : OpenResponseDto) : Observable<OpenResponseDto> {
+  public delOpenResponse(openResponse : OpenResponseDto) : Observable<OpenResponseDto> {
     return this.http.delete<OpenResponseDto>(environment.apiURL + 'openResponse/' + openResponse.id);
   }
 

@@ -11,7 +11,7 @@ export class SelectedResponseService {
 
   constructor(private http : HttpClient) { }
 
-  public getSelectedResponse() : Observable<Array<SelectedResponseDto>> {
+  public getSelectedResponses() : Observable<Array<SelectedResponseDto>> {
     return this.http.get<Array<SelectedResponseDto>>(environment.apiURL + 'selectedResponse');
   }
 
