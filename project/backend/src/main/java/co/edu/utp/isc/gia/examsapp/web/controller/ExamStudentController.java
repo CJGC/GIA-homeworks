@@ -56,7 +56,7 @@ public class ExamStudentController {
     public ResponseEntity<?> findOne(@PathVariable("id") Long id) throws Exception {
         ExamStudentDto examStudent = examStudentService.findOne(id);
         if (examStudent == null) return new ResponseEntity<> ( 
-                "Exam Student doesn't exist", HttpStatus.NOT_FOUND);
+                "ExamStudent doesn't exist", HttpStatus.NOT_FOUND);
         return new ResponseEntity<>(examStudent, HttpStatus.OK);
     }
     
@@ -78,7 +78,7 @@ public class ExamStudentController {
             throws Exception{
         ExamStudentDto examStudent = examStudentService.delete(id);
         if (examStudent == null) return new ResponseEntity<>(
-                "Exam Student doesn't exist", HttpStatus.NOT_FOUND);
+                "ExamStudent doesn't exist", HttpStatus.NOT_FOUND);
         return new ResponseEntity<>(examStudent, HttpStatus.OK);
     }
     
