@@ -21,14 +21,14 @@ export class UserTableComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  public editUser(user : ProfessorDto) : void {
-    this.evenEmitter.emit(user);
+  public editProfessor(professsor : ProfessorDto) : void {
+    this.evenEmitter.emit(professsor);
   }
 
-  public delUser(user : ProfessorDto) : void {
-    this.professorService.delProfessor(user).subscribe(
+  public delProfessor(professsor : ProfessorDto) : void {
+    this.professorService.delProfessor(professsor).subscribe(
       () => {
-        this.professors.splice(this.professors.indexOf(user),1);
+        this.professors.splice(this.professors.indexOf(professsor),1);
       },
       error => {console.log(error.error.message);}
     );
