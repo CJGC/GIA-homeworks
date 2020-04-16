@@ -1,0 +1,32 @@
+<div>
+    <h1> Welcome to exams app </h1>
+</div>
+<br>
+<form [formGroup]="form">
+
+    <span class="ui-float-label">
+        <input id="username-input" type="text" pInputText formControlName="username" />
+        <label for="username-input"> Username </label>
+    </span>
+
+    <span class="ui-float-label">
+        <input id="password-input" type="password" pInputText formControlName="password" />
+        <label for="password-input"> Password </label>
+    </span>
+
+    <div>
+        <p-button [disabled]="form.invalid" label="Log in" class="ui-button-info" (click)="logIn()"> </p-button>
+        <p-button label="Sign up" class="ui-button-secondary" (click)="signUp()"> </p-button>
+    </div>
+    <div>
+        <nav>
+            <a routerLink="#" >Have you forget your password?</a>
+        </nav>
+    </div>
+
+    <div *ngIf="loginfailed; then showfaillogin"></div>
+    <ng-template #showfaillogin >
+        <h3> The user does not exist!</h3>
+    </ng-template>
+    
+</form>
