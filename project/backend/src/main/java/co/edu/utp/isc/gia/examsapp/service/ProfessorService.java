@@ -98,4 +98,16 @@ public class ProfessorService {
             return null;
         }
     }
+    
+    public ProfessorDto findByUsername(String username) throws Exception {
+        
+        try{
+           return modelMapper.map(userRepository.findByUsername(username), 
+                ProfessorDto.class);
+        }
+        catch(Exception e) {
+            System.out.print(e.getMessage());
+            return null;
+        }
+    }
 }
