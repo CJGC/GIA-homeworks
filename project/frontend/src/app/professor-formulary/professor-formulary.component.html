@@ -20,11 +20,11 @@
     <div *ngIf="showAddBtn; then createUserBtn else updateUserBtn"></div>
 
     <ng-template #createUserBtn>
-        <p-button [disabled]="form.invalid" *ngIf="showAddBtn" label="Add user" class="ui-button-info" (click)="saveUser()"></p-button>
+        <p-button [disabled]="form.invalid" *ngIf="showAddBtn" label="Add user" class="ui-button-info" (click)="saveProfessor()"></p-button>
     </ng-template>
 
     <ng-template #updateUserBtn>
-        <p-button [disabled]="form.invalid" *ngIf="!showAddBtn" label="Confirm" class="ui-button-info" (click)="updateUser()"></p-button>
+        <p-button [disabled]="form.invalid" *ngIf="!showAddBtn" label="Confirm" class="ui-button-info" (click)="updateProfessor()"></p-button>
         <p-button *ngIf="!showAddBtn" label="Cancel" class="ui-button-info" (click)="cancelUpdate()"></p-button>
     </ng-template>
 
