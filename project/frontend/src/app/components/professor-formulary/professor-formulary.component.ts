@@ -28,8 +28,7 @@ export class ProfessorFormularyComponent implements OnInit {
       lastname : new FormControl('', [Validators.required, Validators.maxLength(100)]),
       email : new FormControl('', [Validators.required, Validators.maxLength(100), Validators.email]),
       username : new FormControl('', [Validators.required, Validators.maxLength(100)]),
-      password : new FormControl('', [Validators.required, Validators.minLength(8), Validators.maxLength(16)]),
-      exams : ['', []]
+      password : new FormControl('', [Validators.required, Validators.minLength(8), Validators.maxLength(16)])
     });
 
     this.signUpFailed = false;
