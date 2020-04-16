@@ -20,13 +20,17 @@
     </div>
     <div>
         <nav>
-            <a routerLink="#" >Have you forget your password?</a>
+            <a routerLink="#" >Have you forgotten your password?</a>
         </nav>
     </div>
 
-    <div *ngIf="loginfailed; then showfaillogin"></div>
-    <ng-template #showfaillogin >
+    <div *ngIf="loginfailed; then showuserdoesnotexist"></div>
+    <ng-template #showuserdoesnotexist >
         <h3> The user does not exist!</h3>
     </ng-template>
-    
+
+    <div *ngIf="passDoesNotMatch; then showpassdoesnotmatch"></div>
+    <ng-template #showpassdoesnotmatch>
+        <h3> The password does not match </h3>
+    </ng-template>
 </form>
