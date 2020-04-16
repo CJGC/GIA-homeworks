@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 import { ProfessorService } from '../../services/Professsor.service';
-import { environment } from 'src/environments/environment';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
+import { ProfessorGlobalInstance } from 'src/app/services/ProfessorGlobalInstance.service';
 
 
 @Component({
@@ -16,11 +16,10 @@ export class LoginComponent implements OnInit {
   public loginfailed: Boolean;
 
   constructor(
+    private professorGlobalInstance : ProfessorGlobalInstance,
     private professorService : ProfessorService,
     private formBuilder : FormBuilder,
-    private router : Router) { 
-      
-    }
+    private router : Router) { }
 
   ngOnInit(): void {
     this.form = this.formBuilder.group({
@@ -35,11 +34,16 @@ export class LoginComponent implements OnInit {
       this.professorService.getByUsername(this.form.value.username).
         subscribe (
           response => {
-            console.log(response);
+            this.professorGlobalInstance.setProfessorInstance(response);
+            let url = "/main-view";
+            this.router.navigate([url]);
           },
           error => {
             if (error.error === "Professor doesn't exist") {
               this.loginfailed = true;
+            }
+            else {
+              console.log(error);
             }
           }
         );
