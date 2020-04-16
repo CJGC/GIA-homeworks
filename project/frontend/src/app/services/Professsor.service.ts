@@ -15,6 +15,10 @@ export class ProfessorService {
     return this.http.get<Array<ProfessorDto>>(environment.apiURL + 'professor');
   }
 
+  public getByUsername(username : String) : Observable<ProfessorDto> {
+    return this.http.get<ProfessorDto>(environment.apiURL + 'professor/?username=' + username);
+  }
+
   public saveProfessor(professor : ProfessorDto) : Observable<ProfessorDto> {
     return this.http.post<ProfessorDto>(environment.apiURL + 'professor', professor);
   }
