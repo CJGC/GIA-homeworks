@@ -14,6 +14,7 @@ export class LoginComponent implements OnInit {
 
   public form: FormGroup;
   public loginfailed: Boolean;
+  public passDoesNotMatch: Boolean;
 
   constructor(
     private professorGlobalInstance : ProfessorGlobalInstance,
@@ -28,14 +29,22 @@ export class LoginComponent implements OnInit {
     });
     
     this.loginfailed = false;
+    this.passDoesNotMatch = false;
   }
 
   public logIn() : void {
+    this.passDoesNotMatch = false;
+    this.loginfailed = false;
       this.professorService.getByUsername(this.form.value.username).
         subscribe (
           response => {
+            if (response.password !== this.form.value.password) {
+              this.passDoesNotMatch = true;
+              return;
+            }
+
             this.professorGlobalInstance.setProfessorInstance(response);
-            let url = "/main-view";
+            let url = "/professor-main-view";
             this.router.navigate([url]);
           },
           error => {
