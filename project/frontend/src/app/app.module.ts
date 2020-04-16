@@ -9,12 +9,15 @@ import { AppComponent } from './app.component';
 import { ProfessorFormularyComponent } from './professor-formulary/professor-formulary.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UserTableComponent } from './user-table/user-table.component';
+import { LoginComponent } from './components/login/login.component';
+import { AppRoutingModule } from '../app-routing.module';
 
 @NgModule({
   declarations: [
     AppComponent,
     ProfessorFormularyComponent,
-    UserTableComponent
+    UserTableComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -24,7 +27,8 @@ import { UserTableComponent } from './user-table/user-table.component';
     FormsModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
