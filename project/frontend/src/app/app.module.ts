@@ -16,6 +16,7 @@ import { MessagesModule } from 'primeng/messages';
 import { EditorModule } from 'primeng/editor';
 import { SpinnerModule } from 'primeng/spinner';
 import { ListboxModule } from 'primeng/listbox';
+import { StepsModule } from 'primeng/steps';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { ListboxModule } from 'primeng/listbox';
     AppRoutingModule,
     EditorModule,
     SpinnerModule,
-    ListboxModule
+    ListboxModule,
+    StepsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
