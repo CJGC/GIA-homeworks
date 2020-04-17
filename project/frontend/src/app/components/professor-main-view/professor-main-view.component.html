@@ -1,1 +1,79 @@
-<p>professor-main-view works!</p>
+<h1>Welcome {{loggedProfessor.name}} {{loggedProfessor.lastname}}</h1>
+<br>
+<p-button label="New exam" class="ui-button-info" (click)="antiveForm()" icon="pi pi-info-circle"> </p-button>
+<div *ngIf="showForm; then activeForm" > </div>
+
+<ng-template #activeForm>
+<form [formGroup]="form">    
+    <div class="ui-g ui-fluid">
+
+        <div class="ui-g-12 ui-md-12">
+            <label> Exam title </label>
+
+            <span style="background-color: red" *ngIf="(name().dirty || name().touched) && name().invalid && name().errors.required"> 
+                (required)
+            </span>
+
+            <input pInputText maxlength="250" type="text" class="form-input"  formControlName="name"  placeholder="Enter a name.">
+        </div>
+
+        <div class="ui-g-12 ui-md-12">
+            <label> Max grade </label>
+            
+            <span style="background-color: red"*ngIf="(maxGrade().dirty || maxGrade().touched) && maxGrade().invalid && maxGrade().errors.required">
+                (required)
+            </span>
+            
+            <p-spinner [min]="0" [max]="100" precision="2" [step]="0.10" formControlName="maxGrade" placeholder="Enter the grade"></p-spinner>
+        </div>
+ 
+        <div class="ui-g-12 ui-md-12">
+            <label> Exam time </label>
+            
+            <span style="background-color: red"*ngIf="(examtime().dirty || examtime().touched) && examtime().invalid && examtime().errors.required">
+                (required)
+            </span>
+            
+            <input pInputText maxlength="250" type="number" class="form-input" formControlName="examtime"  placeholder="Enter max grade">
+        </div>
+
+        <div class="ui-g-12 ui-md-12">
+            <label> Exam description </label>
+
+            <span style="background-color: red"*ngIf="(descript().dirty || descript().touched) && descript().invalid && descript().errors.required">
+                (required)
+            </span>
+
+            <p-editor [style]="{'height':'320px'}" formControlName="description" > </p-editor>
+        </div>
+
+        <div class="ui-g-12 ui-md-6">
+            <button pButton type="submit" [disabled]="form.invalid" label="Continue" (click)="saveExam()" class="ui-button-success" icon="pi pi-check"> </button>
+        </div>
+
+        <div class="ui-g-12 ui-md-6">
+            <button pButton type="button" label="Cancel" class="ui-button-primary" (click)="cancel()" icon="pi pi-times"> </button>
+        </div>
+    </div>
+
+</form>
+</ng-template>
+
+<!-- <div>
+    <p-listbox [options]="questionsTypes" formControlName="questionType"></p-listbox>
+        
+    <div class="ui-g-12 ui-md-12">
+        <ng-template *ngIf="questionType==='Multi'">
+            <p> multi question </p>
+        </ng-template>
+
+        <ng-template *ngIf="questionType==='Unique'">
+            <p> unique question </p>
+        </ng-template>
+
+        <ng-template *ngIf="questionType==='Open'">
+            <p> open question </p>
+        </ng-template>
+    </div>
+</div> -->
+<hom-exam-table [exams]="exams" (evenEmitter)="receiveExam($event)"></hom-exam-table> 
