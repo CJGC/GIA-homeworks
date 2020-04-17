@@ -1,0 +1,33 @@
+<form [formGroup]="form">
+    <div class="ui-g ui-fluid">
+
+        <div class="ui-g-12 ui-md-12">
+            <label> Is it a correct answer? </label>
+            <p-toggleButton onLabel="Yes" offLabel="No" onIcon="pi pi-check" offIcon="pi pi-times" formControlName="correctAnswer"></p-toggleButton>
+        </div>
+
+        <div class="ui-g-12 ui-md-12">
+            <label> Weight </label>
+            
+            <span style="background-color: red"*ngIf="(weight().dirty || weight().touched) && weight().invalid && weight().errors.required">
+                (required)
+            </span>
+            
+            <p-spinner [min]="0" [max]="100" precision="2" [step]="0.10" formControlName="weight" placeholder="Enter the weight"></p-spinner>
+        </div>
+
+        <div class="ui-g-12 ui-md-12">
+            <label> Answer option description </label>
+
+            <span style="background-color: red"*ngIf="(descript().dirty || descript().touched) && descript().invalid && descript().errors.required">
+                (required)
+            </span>
+
+            <p-editor [style]="{'height':'320px'}" formControlName="description" > </p-editor>
+        </div>
+
+        <div class="ui-g-12 ui-md-12">
+            <button pButton type="submit" [disabled]="form.invalid" label="Add" (click)="saveAnswerOption()" class="ui-button-success" icon="pi pi-check"> </button>
+        </div>
+    </div>
+</form>

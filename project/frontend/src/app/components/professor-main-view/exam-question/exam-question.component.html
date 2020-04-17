@@ -1,0 +1,120 @@
+<div>
+    <label>Select the type of question you want to add</label>
+    <p-listbox [options]="questionsTypes" [(ngModel)]="questionType" (onClick)="clear($event)"></p-listbox>
+        
+    <div *ngIf="questionType==='Multi';then multi"></div>
+    <div *ngIf="questionType==='Unique';then unique"> </div>
+    <div *ngIf="questionType==='Open';then open"> </div>
+
+    <ng-template #multi>
+    <h2> Multi question form </h2>
+    <form [formGroup]="form">
+        <div class="ui-g ui-fluid">
+
+            <div class="ui-g-12 ui-md-12">
+                <label> Question weight </label>
+                
+                <span style="background-color: red"*ngIf="(weight().dirty || weight().touched) && weight().invalid && weight().errors.required">
+                    (required)
+                </span>
+                
+                <p-spinner [min]="0" [max]="100" precision="2" [step]="0.10" formControlName="weight" placeholder="Enter the weight"></p-spinner>
+            </div>
+
+            <div class="ui-g-12 ui-md-12">
+                <label> Question description </label>
+
+                <span style="background-color: red"*ngIf="(descript().dirty || descript().touched) && descript().invalid && descript().errors.required">
+                    (required)
+                </span>
+
+                <p-editor [style]="{'height':'320px'}" formControlName="description" > </p-editor>
+            </div>
+
+            <div class="ui-g-12 ui-md-12">
+                <p-fieldset [collapsed]="true" legend="Add answer option" [toggleable]="true" (onBeforeToggle)="sendQuestion($event)">
+                    <hom-answer-option [question]="question"></hom-answer-option>
+                </p-fieldset>
+            </div>
+            
+            <div class="ui-g-12 ui-md-12">
+                <button pButton type="submit" [disabled]="form.invalid" label="Add" (click)="saveQuestion()" class="ui-button-success" icon="pi pi-check"> </button>
+            </div>
+
+        </div>
+    </form>
+    </ng-template>
+
+    <ng-template #unique>
+    <h2> Unique question form </h2>
+    <form [formGroup]="form">
+        <div class="ui-g ui-fluid">
+
+            <div class="ui-g-12 ui-md-12">
+                <label> Question weight </label>
+                
+                <span style="background-color: red"*ngIf="(weight().dirty || weight().touched) && weight().invalid && weight().errors.required">
+                    (required)
+                </span>
+                
+                <p-spinner [min]="0" [max]="100" precision="2" [step]="0.10" formControlName="weight" placeholder="Enter the weight"></p-spinner>
+            </div>
+
+            <div class="ui-g-12 ui-md-12">
+                <label> Question description </label>
+
+                <span style="background-color: red"*ngIf="(descript().dirty || descript().touched) && descript().invalid && descript().errors.required">
+                    (required)
+                </span>
+
+                <p-editor [style]="{'height':'320px'}" formControlName="description" > </p-editor>
+            </div>
+
+            <div class="ui-g-12 ui-md-12">
+                <p-fieldset [collapsed]="true" legend="Add answer option" [toggleable]="true" (onBeforeToggle)="sendQuestion($event)">
+                    <hom-answer-option [question]="question"></hom-answer-option>
+                </p-fieldset>
+            </div>
+            
+            <div class="ui-g-12 ui-md-12">
+                <button pButton type="submit" [disabled]="form.invalid" label="Add" (click)="saveQuestion()" class="ui-button-success" icon="pi pi-check"> </button>
+            </div>
+
+        </div>
+    </form>
+    </ng-template>
+
+    <ng-template #open>
+        <h2> Open question form </h2>
+        <form [formGroup]="form">
+            <div class="ui-g ui-fluid">
+    
+                <div class="ui-g-12 ui-md-12">
+                    <label> Question weight </label>
+                    
+                    <span style="background-color: red"*ngIf="(weight().dirty || weight().touched) && weight().invalid && weight().errors.required">
+                        (required)
+                    </span>
+                    
+                    <p-spinner [min]="0" [max]="100" precision="2" [step]="0.10" formControlName="weight" placeholder="Enter the weight"></p-spinner>
+                </div>
+    
+                <div class="ui-g-12 ui-md-12">
+                    <label> Question description </label>
+    
+                    <span style="background-color: red"*ngIf="(descript().dirty || descript().touched) && descript().invalid && descript().errors.required">
+                        (required)
+                    </span>
+    
+                    <p-editor [style]="{'height':'320px'}" formControlName="description" > </p-editor>
+                </div>
+    
+                <div class="ui-g-12 ui-md-12">
+                    <button pButton type="submit" [disabled]="form.invalid" label="Add" (click)="saveQuestion()" class="ui-button-success" icon="pi pi-check"> </button>
+                </div>
+    
+            </div>
+        </form>
+    </ng-template>
+
+</div>
