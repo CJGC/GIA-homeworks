@@ -7,7 +7,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { ProfessorFormularyComponent } from './components/professor-formulary/professor-formulary.component';
 import { AppComponent } from './app.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { ExamTableComponent } from './components/exams-table/exam-table.component';
 import { LoginComponent } from './components/login/login.component';
 import { AppRoutingModule } from '../app-routing.module';
 import { ProfessorMainViewComponent } from './components/professor-main-view/professor-main-view.component';
@@ -17,6 +16,11 @@ import { EditorModule } from 'primeng/editor';
 import { SpinnerModule } from 'primeng/spinner';
 import { ListboxModule } from 'primeng/listbox';
 import { StepsModule } from 'primeng/steps';
+import { FieldsetModule } from 'primeng/fieldset'
+import { ToggleButtonModule } from 'primeng/togglebutton';
+import { ExamTableComponent } from './components/professor-main-view/exams-table/exam-table.component';
+import { ExamQuestionComponent } from './components/professor-main-view/exam-question/exam-question.component';
+import { AnswerOptionComponent } from './components/professor-main-view/exam-question/answer-option/answer-option.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +28,9 @@ import { StepsModule } from 'primeng/steps';
     ProfessorFormularyComponent,
     ExamTableComponent,
     LoginComponent,
-    ProfessorMainViewComponent
+    ProfessorMainViewComponent,
+    ExamQuestionComponent,
+    AnswerOptionComponent
   ],
   imports: [
     BrowserModule,
@@ -40,7 +46,9 @@ import { StepsModule } from 'primeng/steps';
     EditorModule,
     SpinnerModule,
     ListboxModule,
-    StepsModule
+    StepsModule,
+    FieldsetModule,
+    ToggleButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]
