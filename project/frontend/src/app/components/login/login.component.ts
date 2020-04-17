@@ -2,8 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 import { ProfessorService } from '../../services/Professsor.service';
 import { Router } from '@angular/router';
-import { ProfessorGlobalInstance } from 'src/app/services/ProfessorGlobalInstance.service';
-
 
 @Component({
   selector: 'hom-login',
@@ -17,7 +15,6 @@ export class LoginComponent implements OnInit {
   public passDoesNotMatch: Boolean;
 
   constructor(
-    private professorGlobalInstance : ProfessorGlobalInstance,
     private professorService : ProfessorService,
     private formBuilder : FormBuilder,
     private router : Router) { }
@@ -43,7 +40,7 @@ export class LoginComponent implements OnInit {
               return;
             }
 
-            this.professorGlobalInstance.setProfessorInstance(response);
+            sessionStorage.professor = JSON.stringify(response);
             let url = "/professor-main-view";
             this.router.navigate([url]);
           },
