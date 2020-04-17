@@ -2,9 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ProfessorDto } from 'src/app/dto/ProfessorDto';
 import { Router } from '@angular/router';
 import { ExamDto } from 'src/app/dto/ExamDto';
-import { MessageService } from 'primeng/api';
+import { MessageService, MenuItem } from 'primeng/api';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
-import {SelectItem} from 'primeng/api';
 
 @Component({
   selector: 'hom-professor-main-view',
@@ -18,8 +17,9 @@ export class ProfessorMainViewComponent implements OnInit {
   public loggedProfessor : ProfessorDto;
   public exams : Array<ExamDto>;
   public form : FormGroup;
-  // public questionsTypes : SelectItem[];
-  // public questionType : String;
+  public examSettingItems : MenuItem[];
+  public activeIndex : number;
+  public exam : ExamDto;
   
   constructor(
     public formBuilder: FormBuilder,
@@ -44,12 +44,12 @@ export class ProfessorMainViewComponent implements OnInit {
       this.router.navigate([url]);
     }
 
+    this.examSettingItems = [
+      {label: 'Exam info'},
+      {label: 'Exam questions'}
+    ];
+    this.activeIndex = 0;
     this.exams = this.loggedProfessor.exams;
-    // this.questionsTypes = [
-    //   {label: 'Multi question', value:'Multi'}, 
-    //   {label: 'Unique question', value:'Unique'}, 
-    //   {label: 'Open question', value:'Open'}
-    // ];
   }
 
   public name() : any {
@@ -68,8 +68,8 @@ export class ProfessorMainViewComponent implements OnInit {
     return this.form.get('description');
   }
 
-  public receiveExam($event) : void {
-
+  public receiveExam($exam) : void {
+    this.form.setValue(event);
   }
 
   public saveExam() : void {
@@ -78,6 +78,7 @@ export class ProfessorMainViewComponent implements OnInit {
 
   public antiveForm() : void {
     this.showForm = true;
+    this.exam = this.form.value;
     // this.messageService.add({
     //   severity : 'success',
     //   summary : 'Exam created',
@@ -86,6 +87,8 @@ export class ProfessorMainViewComponent implements OnInit {
   }
 
   public cancel() : void {
+    this.form.reset();
+    this.exam = null;
     this.showForm = false;
   }
 
