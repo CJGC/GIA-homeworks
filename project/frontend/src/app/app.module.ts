@@ -21,6 +21,7 @@ import { ToggleButtonModule } from 'primeng/togglebutton';
 import { ExamTableComponent } from './components/professor-main-view/exams-table/exam-table.component';
 import { ExamQuestionComponent } from './components/professor-main-view/exam-question/exam-question.component';
 import { AnswerOptionComponent } from './components/professor-main-view/exam-question/answer-option/answer-option.component';
+import { AnswerOptionTableComponent } from './components/professor-main-view/exam-question/answer-option/answer-option-table/answer-option-table.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { AnswerOptionComponent } from './components/professor-main-view/exam-que
     LoginComponent,
     ProfessorMainViewComponent,
     ExamQuestionComponent,
-    AnswerOptionComponent
+    AnswerOptionComponent,
+    AnswerOptionTableComponent
   ],
   imports: [
     BrowserModule,
