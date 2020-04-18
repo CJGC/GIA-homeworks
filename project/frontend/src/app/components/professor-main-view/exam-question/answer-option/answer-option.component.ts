@@ -11,7 +11,8 @@ import { AnswerOptionDto } from 'src/app/dto/AnswerOptionDto';
 export class AnswerOptionComponent implements OnInit {
 
   public form : FormGroup;
-  public anwerOptions : Array<AnswerOptionDto>;
+  public answerOptions : Array<AnswerOptionDto>;
+  private ansOpt : AnswerOptionDto;
 
   @Input() public question : QuestionDto;
 
@@ -24,7 +25,7 @@ export class AnswerOptionComponent implements OnInit {
       correctAnswer : new FormControl('', [Validators.required, Validators.maxLength(100)])
     });
 
-    this.anwerOptions = Array<AnswerOptionDto>();
+    this.answerOptions = Array<AnswerOptionDto>();
   }
 
   public weight() : any {
@@ -35,7 +36,30 @@ export class AnswerOptionComponent implements OnInit {
     return this.form.get('description');
   }
 
+  public receiveAnsOptRequest($event) : void {
+    let requestType = $event.requestType;
+    this.ansOpt = <AnswerOptionDto> $event.answerDto;
+
+    if (requestType === "edit") {
+      this.form.setValue(this.ansOpt);
+    }
+
+    if (requestType === "del") {
+      this.answerOptions.splice(this.answerOptions.indexOf(this.ansOpt), 1);
+    }
+  }
+
   public saveAnswerOption() : void {
-    this.anwerOptions.push(<AnswerOptionDto> this.form.value);
+    let ansOpt = <AnswerOptionDto> this.form.value;
+    let index = this.answerOptions.indexOf(this.ansOpt);
+
+    if (index === -1) {
+      this.answerOptions.push(ansOpt);
+    }
+    else {
+      this.answerOptions.splice(index, 1, ansOpt);
+    }
+
+    this.form.reset();
   }
 }
