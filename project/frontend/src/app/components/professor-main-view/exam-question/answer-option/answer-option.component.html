@@ -27,7 +27,9 @@
         </div>
 
         <div class="ui-g-12 ui-md-12">
-            <button pButton type="submit" [disabled]="form.invalid" label="Add" (click)="saveAnswerOption()" class="ui-button-success" icon="pi pi-check"> </button>
+            <button pButton type="submit" [disabled]="form.invalid" label="Send" (click)="saveAnswerOption()" class="ui-button-success" icon="pi pi-check"> </button>
         </div>
     </div>
 </form>
+
+<hom-answer-option-table [answerOptions]="answerOptions" (evenEmitter)="receiveAnsOptRequest($event)"></hom-answer-option-table>
